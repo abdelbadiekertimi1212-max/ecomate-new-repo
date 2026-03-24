@@ -12,19 +12,30 @@ export default function LandingEffects() {
     const cur = document.getElementById('em-cursor')
     const ring = document.getElementById('em-cursor-ring')
     if (cur && ring) {
-      let rx = 0, ry = 0, cx = 0, cy = 0
+      // Start at center to avoid corner stuck
+      let cx = window.innerWidth / 2, cy = window.innerHeight / 2
+      let rx = cx, ry = cy
+      
       const onMove = (e: MouseEvent) => {
         cx = e.clientX; cy = e.clientY
-        cur.style.left = cx + 'px'; cur.style.top = cy + 'px'
+        cur.style.transform = `translate3d(${cx}px, ${cy}px, 0) translate(-50%, -50%)`
       }
-      document.addEventListener('mousemove', onMove)
+      
+      window.addEventListener('mousemove', onMove, { passive: true })
+      
+      let rafId: number
       const loop = () => {
-        rx += (cx - rx) * .1; ry += (cy - ry) * .1
-        ring.style.left = rx + 'px'; ring.style.top = ry + 'px'
-        requestAnimationFrame(loop)
+        rx += (cx - rx) * 0.15
+        ry += (cy - ry) * 0.15
+        ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`
+        rafId = requestAnimationFrame(loop)
       }
       loop()
-      return () => document.removeEventListener('mousemove', onMove)
+      
+      return () => {
+        window.removeEventListener('mousemove', onMove)
+        cancelAnimationFrame(rafId)
+      }
     }
   }, [mounted])
 
@@ -267,11 +278,13 @@ export default function LandingEffects() {
         background: '#2563eb', pointerEvents: 'none', zIndex: 9999,
         transform: 'translate(-50%,-50%)', mixBlendMode: 'screen',
         transition: 'width .2s, height .2s, background .2s',
+        willChange: 'transform',
       }} />
       <div id="em-cursor-ring" style={{
         position: 'fixed', width: 32, height: 32, borderRadius: '50%',
         border: '1px solid rgba(37,99,235,.4)', pointerEvents: 'none',
         zIndex: 9998, transform: 'translate(-50%,-50%)',
+        willChange: 'transform',
       }} />
       {/* Film grain noise overlay */}
       <div style={{

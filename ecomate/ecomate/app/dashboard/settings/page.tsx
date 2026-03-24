@@ -72,6 +72,18 @@ export default function SettingsPage() {
     setPwLoading(false)
   }
 
+  async function deleteAccount() {
+    if (!confirm('Are you absolutely sure? This will delete all your data and cannot be undone.')) return
+    const supabase = createClient()
+    const { error } = await supabase.rpc('delete_user_self')
+    if (error) toast.error('Error: ' + error.message)
+    else {
+      toast.success('Account deleted.')
+      await supabase.auth.signOut()
+      router.push('/')
+    }
+  }
+
   const inputStyle: React.CSSProperties = {
     width: '100%', padding: '11px 16px', background: 'rgba(255,255,255,.05)',
     border: '1.5px solid rgba(255,255,255,.08)', borderRadius: 10,
@@ -101,35 +113,48 @@ export default function SettingsPage() {
 
       {/* Profile Tab */}
       {tab === 'profile' && (
-        <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-c)', borderRadius: 16, padding: '28px' }}>
-          <h3 style={{ fontFamily: 'var(--font-poppins)', fontSize: 16, fontWeight: 700, color: 'var(--text-main)', marginBottom: 20 }}>Profile Information</h3>
-          <form onSubmit={saveProfile} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <div>
-              <label style={{ fontSize: 11.5, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '.06em', textTransform: 'uppercase', display: 'block', marginBottom: 6 }}>Email Address</label>
-              <input style={inputStyle} type="email" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} placeholder="you@example.com" />
-            </div>
-            <div>
-              <label style={{ fontSize: 11.5, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '.06em', textTransform: 'uppercase', display: 'block', marginBottom: 6 }}>Full Name</label>
-              <input style={inputStyle} type="text" value={form.full_name} onChange={e => setForm(f => ({ ...f, full_name: e.target.value }))} placeholder="Your full name" />
-            </div>
-            <div>
-              <label style={{ fontSize: 11.5, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '.06em', textTransform: 'uppercase', display: 'block', marginBottom: 6 }}>Business / Store Name</label>
-              <input style={inputStyle} type="text" value={form.business_name} onChange={e => setForm(f => ({ ...f, business_name: e.target.value }))} placeholder="My Store DZ" />
-            </div>
-            <div>
-              <label style={{ fontSize: 11.5, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '.06em', textTransform: 'uppercase', display: 'block', marginBottom: 6 }}>Phone Number</label>
-              <input style={inputStyle} type="tel" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} placeholder="+213 555 00 00 00" />
-            </div>
-            <div>
-              <label style={{ fontSize: 11.5, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '.06em', textTransform: 'uppercase', display: 'block', marginBottom: 6 }}>Current Plan</label>
-              <div style={{ padding: '11px 16px', background: 'rgba(37,99,235,.08)', border: '1px solid rgba(37,99,235,.2)', borderRadius: 10, fontSize: 14, color: '#2563eb', fontWeight: 600 }}>
-                {profile?.plan === 'starter' ? '⏱ Starter (Trial)' : profile?.plan === 'growth' ? '⚡ Growth' : '💎 Business'}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-c)', borderRadius: 16, padding: '28px' }}>
+            <h3 style={{ fontFamily: 'var(--font-poppins)', fontSize: 16, fontWeight: 700, color: 'var(--text-main)', marginBottom: 20 }}>Profile Information</h3>
+            <form onSubmit={saveProfile} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <div>
+                <label style={{ fontSize: 11.5, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '.06em', textTransform: 'uppercase', display: 'block', marginBottom: 6 }}>Email Address</label>
+                <input style={inputStyle} type="email" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} placeholder="you@example.com" />
               </div>
-            </div>
-            <button type="submit" disabled={loading} className="btn-primary" style={{ alignSelf: 'flex-start', padding: '12px 28px' }}>
-              {loading ? 'Saving...' : 'Save Changes'}
+              <div>
+                <label style={{ fontSize: 11.5, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '.06em', textTransform: 'uppercase', display: 'block', marginBottom: 6 }}>Full Name</label>
+                <input style={inputStyle} type="text" value={form.full_name} onChange={e => setForm(f => ({ ...f, full_name: e.target.value }))} placeholder="Your full name" />
+              </div>
+              <div>
+                <label style={{ fontSize: 11.5, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '.06em', textTransform: 'uppercase', display: 'block', marginBottom: 6 }}>Business / Store Name</label>
+                <input style={inputStyle} type="text" value={form.business_name} onChange={e => setForm(f => ({ ...f, business_name: e.target.value }))} placeholder="My Store DZ" />
+              </div>
+              <div>
+                <label style={{ fontSize: 11.5, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '.06em', textTransform: 'uppercase', display: 'block', marginBottom: 6 }}>Phone Number</label>
+                <input style={inputStyle} type="tel" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} placeholder="+213 555 00 00 00" />
+              </div>
+              <div>
+                <label style={{ fontSize: 11.5, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '.06em', textTransform: 'uppercase', display: 'block', marginBottom: 6 }}>Current Plan</label>
+                <div style={{ padding: '11px 16px', background: 'rgba(37,99,235,.08)', border: '1px solid rgba(37,99,235,.2)', borderRadius: 10, fontSize: 14, color: '#2563eb', fontWeight: 600 }}>
+                  {profile?.plan === 'starter' ? '⏱ Starter (Trial)' : profile?.plan === 'growth' ? '⚡ Growth' : '💎 Business'}
+                </div>
+              </div>
+              <button type="submit" disabled={loading} className="btn-primary" style={{ alignSelf: 'flex-start', padding: '12px 28px' }}>
+                {loading ? 'Saving...' : 'Save Changes'}
+              </button>
+            </form>
+          </div>
+
+          <div style={{ background: 'rgba(239,68,68,.03)', border: '1px solid rgba(239,68,68,.15)', borderRadius: 16, padding: '24px' }}>
+            <h3 style={{ fontFamily: 'var(--font-poppins)', fontSize: 15, fontWeight: 700, color: '#ef4444', marginBottom: 8 }}>Danger Zone</h3>
+            <p style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 16 }}>This action will permanently delete your account and all your data. This cannot be undone.</p>
+            <button onClick={deleteAccount} style={{
+              background: '#ef4444', color: '#fff', border: 'none', borderRadius: 10, padding: '10px 20px',
+              fontWeight: 600, fontSize: 13, cursor: 'pointer', transition: 'filter .2s',
+            }} onMouseOver={e => (e.currentTarget.style.filter = 'brightness(1.1)')} onMouseOut={e => (e.currentTarget.style.filter = 'none')}>
+              Delete My Account
             </button>
-          </form>
+          </div>
         </div>
       )}
 
