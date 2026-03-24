@@ -7,6 +7,7 @@ export default function LandingEffects() {
   useEffect(() => { setMounted(true) }, [])
 
   useEffect(() => {
+    if (!mounted) return
     // ── CURSOR ──
     const cur = document.getElementById('em-cursor')
     const ring = document.getElementById('em-cursor-ring')
@@ -25,9 +26,10 @@ export default function LandingEffects() {
       loop()
       return () => document.removeEventListener('mousemove', onMove)
     }
-  }, [])
+  }, [mounted])
 
   useEffect(() => {
+    if (!mounted) return
     // ── SCROLL REVEAL ──
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -39,11 +41,14 @@ export default function LandingEffects() {
     }, { threshold: .08, rootMargin: '0px 0px -40px 0px' })
     document.querySelectorAll('.sr-el').forEach(el => obs.observe(el))
     return () => obs.disconnect()
-  }, [])
+  }, [mounted])
 
   useEffect(() => {
+    if (!mounted) return
     // ── BENTO GLOW ON HOVER ──
     const cards = document.querySelectorAll<HTMLElement>('.bc-glow')
+    const cleanups: (() => void)[] = []
+    
     cards.forEach(c => {
       const onMove = (e: MouseEvent) => {
         const r = c.getBoundingClientRect()
@@ -54,14 +59,16 @@ export default function LandingEffects() {
       const onLeave = () => { c.style.background = '' }
       c.addEventListener('mousemove', onMove as EventListener)
       c.addEventListener('mouseleave', onLeave)
-      return () => {
+      cleanups.push(() => {
         c.removeEventListener('mousemove', onMove as EventListener)
         c.removeEventListener('mouseleave', onLeave)
-      }
+      })
     })
-  }, [])
+    return () => cleanups.forEach(fn => fn())
+  }, [mounted])
 
   useEffect(() => {
+    if (!mounted) return
     // ── COUNTER ANIMATION ──
     const cobs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -81,9 +88,10 @@ export default function LandingEffects() {
     }, { threshold: .3 })
     document.querySelectorAll('.counter-group').forEach(el => cobs.observe(el))
     return () => cobs.disconnect()
-  }, [])
+  }, [mounted])
 
   useEffect(() => {
+    if (!mounted) return
     // ── NAVBAR SCROLL ──
     const nav = document.getElementById('em-nav')
     if (!nav) return
@@ -98,9 +106,10 @@ export default function LandingEffects() {
     }
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [mounted])
 
   useEffect(() => {
+    if (!mounted) return
     // ── THREE.JS CANVAS ──
     const canvas = document.getElementById('hcanvas') as HTMLCanvasElement | null
     if (!canvas || window.innerWidth < 768) return
@@ -246,7 +255,7 @@ export default function LandingEffects() {
     return () => {
       ;(canvas as any)._cleanup?.()
     }
-  }, [])
+  }, [mounted])
 
   if (!mounted) return null
 

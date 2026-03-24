@@ -10,6 +10,7 @@ const navItems = [
   { href: '/admin-xm9k2/dashboard/reviews', icon: '⭐', label: 'Reviews' },
   { href: '/admin-xm9k2/dashboard/partners', icon: '🤝', label: 'Partners' },
   { href: '/admin-xm9k2/dashboard/services', icon: '⚙️', label: 'Services' },
+  { href: '/admin-xm9k2/dashboard/plans', icon: '💳', label: 'Pricing Plans' },
   { href: '/admin-xm9k2/dashboard/contact', icon: '☎️', label: 'Contact Details' },
   { href: '/admin-xm9k2/dashboard/settings', icon: '🔧', label: 'Settings' },
 ]

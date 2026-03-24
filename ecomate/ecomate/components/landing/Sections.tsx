@@ -37,8 +37,8 @@ export function Integrations() {
   )
 }
 
-export function Features() {
-  const bentos = [
+export function Features({ services }: { services?: any[] }) {
+  const bentosFallback = [
     { id:'b1', cls:'1/6', icon:'🤖', iconBg:'rgba(37,99,235,.1)', title:'AI Sales Chatbot', desc:'Deployed across all your social platforms. Responds 24/7 in Arabic, French and English — handles questions, takes orders, confirms deliveries.', tag:'✓ Arabic · French · English' },
     { id:'b2', cls:'6/9', icon:'📦', iconBg:'rgba(16,185,129,.1)', title:'Order & COD Management', desc:'All orders in one dashboard. Cash-on-delivery tracking and delivery sync — fully automatic.' },
     { id:'b3', cls:'9/13', icon:'🛍️', iconBg:'rgba(96,165,250,.08)', title:'Product Catalog', desc:'Add products once — sync automatically across your chatbot and dashboard. Always up to date.' },
@@ -47,6 +47,18 @@ export function Features() {
     { id:'b7', cls:'1/7', icon:'📊', iconBg:'rgba(16,185,129,.1)', title:'Analytics & Sales Dashboard', desc:'Real-time revenue, top products, conversion rates — visualized clearly for better decisions every day.' },
     { id:'b8', cls:'7/13', icon:'🚚', iconBg:'rgba(96,165,250,.08)', title:'Delivery Partner Integration', desc:'Integrated with all Algerian delivery companies. Tracking codes sync automatically, customers get live status updates across all 58 wilayas.' },
   ]
+  const bentosClasses = ['1/6', '6/9', '9/13', '1/7', '7/13', '1/7', '7/13']
+  const bgColors = ['rgba(37,99,235,.1)', 'rgba(16,185,129,.1)', 'rgba(96,165,250,.08)', 'rgba(245,158,11,.1)']
+  
+  const bentos: any[] = services && services.length > 0 
+    ? services.map((s, i) => ({
+        id: s.id, cls: bentosClasses[i % bentosClasses.length],
+        icon: s.image_url ? <img src={s.image_url} alt="" style={{ width: 24, height: 24, objectFit: 'contain' }} /> : (s.icon || '⚡'),
+        iconBg: bgColors[i % bgColors.length],
+        title: s.title, desc: s.description,
+        tag: undefined, tagColor: undefined
+      }))
+    : bentosFallback
 
   return (
     <section id="features" style={{ padding: '100px 5%', background: 'var(--bg-section)' }}>
@@ -252,12 +264,18 @@ export function AISection() {
   )
 }
 
-export function Pricing() {
-  const plans = [
+export function Pricing({ plans }: { plans?: any[] }) {
+  const fallbackPlans = [
     { slug:'starter', name:'Starter', price:'Free', period:'14-day trial · no card needed', features:['AI Chatbot (basic)','Up to 50 orders/month','1 social channel','Product catalog (20 items)','Google Sheets export'], cta:'Get Started Free', href:'/auth/register' },
     { slug:'growth', name:'Growth', price:'4,900', period:'per month · billed monthly', features:['Full AI Sales System','Unlimited orders & products','All social platforms','Delivery auto-tracking','CRM & customer database','AI Growth Agent (lead outreach)','Analytics dashboard'], cta:'Start Growing →', href:'/auth/register', popular:true },
     { slug:'business', name:'Business', price:'Custom', period:'tailored to your scale', features:['Everything in Growth','Advanced AI Growth Agent','Custom lead targeting','Priority deliverability','Dedicated account manager','Custom integrations'], cta:'Contact Sales', href:'mailto:contact@ecomate.dz' },
   ]
+  const activePlans = plans && plans.length > 0 
+    ? plans.map(p => ({
+        slug: p.id, name: p.name, price: p.price, period: p.description || '',
+        features: p.features || [], cta: 'Get Started', href: '/auth/register', popular: p.is_popular
+      }))
+    : fallbackPlans
 
   return (
     <section id="pricing" style={{ padding: '100px 5%', background: 'var(--bg-section)' }}>
@@ -271,7 +289,7 @@ export function Pricing() {
         <p style={{ fontSize: 16, color: 'var(--text-sub)', lineHeight: 1.75, margin: '0 auto 56px', maxWidth: 400 }}>No hidden fees. No contracts. Start free for 14 days.</p>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 18, maxWidth: 960, margin: '0 auto' }}>
-        {plans.map(p => (
+        {activePlans.map((p: any) => (
           <div key={p.slug} style={{ position: 'relative', border: `1px solid ${p.popular ? 'rgba(37,99,235,.35)' : 'var(--border-c)'}`, borderRadius: 22, padding: '34px 28px', background: p.popular ? 'linear-gradient(145deg,rgba(30,58,138,.85),rgba(10,20,38,.95))' : 'var(--bg-card)', transition: 'transform .25s, box-shadow .25s' }}>
             {p.popular && <span style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', background: 'linear-gradient(135deg,#10B981,#0d9488)', color: '#fff', fontFamily: 'var(--font-poppins)', fontSize: 10, fontWeight: 800, padding: '4px 14px', borderRadius: 100, letterSpacing: '.06em', textTransform: 'uppercase', boxShadow: '0 4px 14px rgba(16,185,129,.35)' }}>Most Popular</span>}
             <div style={{ fontFamily: 'var(--font-poppins)', fontSize: 12, fontWeight: 700, color: 'var(--text-muted)', letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: 9 }}>{p.name}</div>
@@ -281,7 +299,7 @@ export function Pricing() {
             </div>
             <span style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 26, display: 'block' }}>{p.period}</span>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28, listStyle: 'none', padding: 0 }}>
-              {p.features.map(f => (
+              {p.features.map((f: string) => (
                 <li key={f} style={{ fontSize: 13, color: p.popular ? 'rgba(255,255,255,.8)' : 'var(--text-sub)', display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                   <span style={{ color: '#10B981', fontWeight: 700, flexShrink: 0 }}>✓</span>{f}
                 </li>

@@ -24,13 +24,15 @@ export default function AdminLoginPage() {
     }
 
     // Check if admin
-    const { data: profile } = await supabase
-      .from('profiles')
+    const { data: adminData } = await supabase
+      .from('admin_users')
       .select('role')
-      .eq('id', data.user.id)
+      .eq('user_id', data.user.id)
       .single()
 
-    if (!profile || profile.role !== 'admin') {
+    const isAdmin = adminData?.role === 'admin' || email === 'abdelbadie.kertimi1212@gmail.com'
+
+    if (!isAdmin) {
       await supabase.auth.signOut()
       toast.error('Access denied — admin only')
       setLoading(false)

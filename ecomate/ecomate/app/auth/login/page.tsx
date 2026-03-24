@@ -7,6 +7,7 @@ import toast from 'react-hot-toast'
 
 function LoginContent() {
   const router = useRouter()
+  const supabase = createClient()
   const searchParams = useSearchParams()
   const authError = searchParams.get('error')
   const needsVerify = searchParams.get('verify')
