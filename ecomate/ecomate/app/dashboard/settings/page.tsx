@@ -10,7 +10,7 @@ export default function SettingsPage() {
   const [loading, setLoading] = useState(false)
   const [pwLoading, setPwLoading] = useState(false)
   const [tab, setTab] = useState<'profile' | 'security' | 'plan'>('profile')
-  const [form, setForm] = useState({ full_name: '', business_name: '', phone: '' })
+  const [form, setForm] = useState({ full_name: '', business_name: '', phone: '', email: '' })
   const [pw, setPw] = useState({ current: '', newPw: '', confirm: '' })
 
   useEffect(() => {
@@ -19,7 +19,12 @@ export default function SettingsPage() {
       if (!data.user) return
       const { data: p } = await supabase.from('profiles').select('*').eq('id', data.user.id).single()
       setProfile(p)
-      setForm({ full_name: p?.full_name || '', business_name: p?.business_name || '', phone: p?.phone || '' })
+      setForm({
+        full_name: p?.full_name || '',
+        business_name: p?.business_name || '',
+        phone: p?.phone || '',
+        email: data.user.email || ''
+      })
     })
   }, [])
 
@@ -28,7 +33,25 @@ export default function SettingsPage() {
     setLoading(true)
     const supabase = createClient()
     const { data: { user } } = await supabase.auth.getUser()
-    const { error } = await supabase.from('profiles').update(form).eq('id', user!.id)
+    
+    // Update profiles table
+    const { error } = await supabase.from('profiles').update({
+      full_name: form.full_name,
+      business_name: form.business_name,
+      phone: form.phone
+    }).eq('id', user!.id)
+
+    // Handle email change explicitly
+    if (form.email && form.email !== user?.email) {
+      const { error: emailError } = await supabase.auth.updateUser({ email: form.email })
+      if (emailError) {
+        toast.error('Email update failed: ' + emailError.message)
+        setLoading(false)
+        return
+      }
+      toast.success('Confirmation links sent to both old and new emails!')
+    }
+
     if (error) toast.error(error.message)
     else {
       toast.success('Profile updated!')
@@ -81,6 +104,10 @@ export default function SettingsPage() {
         <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-c)', borderRadius: 16, padding: '28px' }}>
           <h3 style={{ fontFamily: 'var(--font-poppins)', fontSize: 16, fontWeight: 700, color: 'var(--text-main)', marginBottom: 20 }}>Profile Information</h3>
           <form onSubmit={saveProfile} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <div>
+              <label style={{ fontSize: 11.5, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '.06em', textTransform: 'uppercase', display: 'block', marginBottom: 6 }}>Email Address</label>
+              <input style={inputStyle} type="email" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} placeholder="you@example.com" />
+            </div>
             <div>
               <label style={{ fontSize: 11.5, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '.06em', textTransform: 'uppercase', display: 'block', marginBottom: 6 }}>Full Name</label>
               <input style={inputStyle} type="text" value={form.full_name} onChange={e => setForm(f => ({ ...f, full_name: e.target.value }))} placeholder="Your full name" />
