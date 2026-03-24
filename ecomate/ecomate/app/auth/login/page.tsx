@@ -9,6 +9,7 @@ function LoginContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const authError = searchParams.get('error')
+  const needsVerify = searchParams.get('verify')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -18,13 +19,27 @@ function LoginContent() {
     e.preventDefault()
     if (!email || !password) return toast.error('Please fill in all fields')
     setLoading(true)
-    const supabase = createClient()
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    const { data: { user }, error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) {
-      toast.error(error.message)
+      if (error.message.includes('Email not confirmed')) {
+        toast.error('Please verify your email address first. Check your inbox!')
+      } else {
+        toast.error(error.message)
+      }
       setLoading(false)
       return
     }
+
+    if (user) {
+      const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single()
+      if (profile?.role === 'admin') {
+        toast.success('Welcome back, Admin!')
+        router.push('/admin-xm9k2/dashboard')
+        router.refresh()
+        return
+      }
+    }
+
     toast.success('Welcome back!')
     router.push('/dashboard')
     router.refresh()
@@ -120,6 +135,17 @@ function LoginContent() {
               color: '#f87171', marginBottom: 20,
             }}>
               ⚠️ {decodeURIComponent(authError)}
+            </div>
+          )}
+
+          {needsVerify && (
+            <div style={{
+              background: 'rgba(16,185,129,.1)', border: '1px solid rgba(16,185,129,.3)',
+              borderRadius: 10, padding: '12px 16px', fontSize: 13.5,
+              color: '#10b981', marginBottom: 24, lineHeight: 1.5,
+            }}>
+              ✉️ <strong>Verify your email!</strong><br />
+              We sent a confirmation link to your inbox. Please click it to activate your EcoMate account (check your spam folder if you don&apos;t see it).
             </div>
           )}
 

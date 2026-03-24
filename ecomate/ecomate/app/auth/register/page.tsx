@@ -56,8 +56,8 @@ export default function RegisterPage() {
       setLoading(false)
       return
     }
-    toast.success('Check your email to confirm your account!')
-    router.push('/auth/login')
+    toast.success('Account created! Please verify your email.')
+    router.push('/auth/login?verify=true')
   }
 
   const str = pwStrength(form.password)
