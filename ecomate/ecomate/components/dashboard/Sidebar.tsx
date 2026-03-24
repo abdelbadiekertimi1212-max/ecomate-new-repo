@@ -62,10 +62,10 @@ export default function DashboardSidebar({ profile }: { profile: any }) {
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           fontSize: 16, marginBottom: 8,
         }}>
-          {profile?.full_name?.[0]?.toUpperCase() || '👤'}
+          {(profile?.full_name?.[0] || profile?.business_name?.[0] || '👤').toUpperCase()}
         </div>
         <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-main)', fontFamily: 'var(--font-poppins)', marginBottom: 2 }}>
-          {profile?.full_name || 'User'}
+          {profile?.full_name || profile?.business_name || 'Client'}
         </div>
         <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>{profile?.business_name || 'My Store'}</div>
         <div style={{
