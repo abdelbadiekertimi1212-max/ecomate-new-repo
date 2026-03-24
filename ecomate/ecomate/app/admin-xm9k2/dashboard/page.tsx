@@ -11,11 +11,11 @@ export default async function AdminDashboardPage() {
     { data: pendingReviews },
     { data: recentClients },
   ] = await Promise.all([
-    supabase.from('profiles').select('*', { count: 'exact', head: true }).eq('role', 'client'),
+    supabase.from('profiles').select('*', { count: 'exact', head: true }),
     supabase.from('orders').select('*', { count: 'exact', head: true }),
     supabase.from('partners').select('*', { count: 'exact', head: true }).eq('is_live', true),
     supabase.from('reviews').select('*').eq('is_approved', false).order('created_at', { ascending: false }).limit(5),
-    supabase.from('profiles').select('*').eq('role', 'client').order('created_at', { ascending: false }).limit(5),
+    supabase.from('profiles').select('*').order('created_at', { ascending: false }).limit(5),
   ])
 
   const stats = [

@@ -17,7 +17,6 @@ export default function AdminClientsPage() {
     const { data } = await supabase
       .from('profiles')
       .select('*')
-      .eq('role', 'client')
       .order('created_at', { ascending: false })
     setClients(data || [])
     setLoading(false)
