@@ -2,8 +2,11 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
+import { useTranslations } from 'next-intl'
+import LanguageToggle from '@/components/ui/LanguageToggle'
 
 export default function Nav() {
+  const t = useTranslations('Nav')
   const [scrolled, setScrolled] = useState(false)
   const [theme, setTheme] = useState('dark')
   const [user, setUser] = useState<any>(null)
@@ -32,8 +35,8 @@ export default function Nav() {
   return (
     <nav
       style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 500,
-        height: 68, padding: '0 5%',
+        position: 'fixed', top: 0, insetInline: 0, zIndex: 500,
+        height: 68, paddingInline: '5%',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         background: scrolled ? 'var(--nav-scroll, rgba(7,16,31,.96))' : 'var(--nav-bg)',
         backdropFilter: 'blur(24px)',
@@ -62,13 +65,14 @@ export default function Nav() {
               color: 'var(--text-sub)', transition: 'color .2s',
               textDecoration: 'none',
             }}>
-              {['Features', 'AI System', 'Pricing', 'How It Works', 'Reviews'][i]}
+              {[t('features'), t('aiSystem'), t('pricing'), t('howItWorks'), t('reviews')][i]}
             </a>
           </li>
         ))}
       </ul>
 
       <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+        <LanguageToggle />
         <button onClick={toggleTheme} style={{
           width: 44, height: 24, borderRadius: 100, border: 'none',
           background: theme === 'dark' ? 'linear-gradient(135deg,#1e3a8a,#2563eb)' : 'linear-gradient(135deg,#e2e8f0,#cbd5e1)',
@@ -84,7 +88,7 @@ export default function Nav() {
 
         {user ? (
           <Link href="/dashboard" className="btn-primary" style={{ padding: '8px 20px', fontSize: 13 }}>
-            Dashboard →
+            {t('dashboard')} →
           </Link>
         ) : (
           <>
@@ -93,10 +97,10 @@ export default function Nav() {
               background: 'var(--bg-card)', border: '1px solid var(--border-c)',
               borderRadius: 8, padding: '8px 18px', transition: 'all .2s', textDecoration: 'none',
             }}>
-              Sign In
+              {t('signIn')}
             </Link>
             <Link href="/auth/register" className="btn-primary" style={{ padding: '9px 20px', fontSize: 13 }}>
-              Try It Now →
+              {t('bookDemo')} →
             </Link>
           </>
         )}

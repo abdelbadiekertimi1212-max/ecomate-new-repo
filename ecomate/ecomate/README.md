@@ -1,6 +1,4 @@
-# EcoMate — Full-Stack SaaS Platform 🇩🇿
-
-The complete e-commerce SaaS platform for Algerian businesses. Built with Next.js 14, Supabase, and TypeScript.
+The professional AI-powered sales & fulfillment OS for Algerian SMEs. Direct ManyChat ↔ EcoMate synchronization with automated Edahabia/CIB payments.
 
 ---
 
@@ -86,7 +84,8 @@ Open [http://localhost:3000](http://localhost:3000)
      WHERE email = 'abdelbadie.kertimi1212@gmail.com'
    );
    ```
-5. Access the admin panel at: [http://localhost:3000/admin-xm9k2](http://localhost:3000/admin-xm9k2)
+    ```
+5. Access the admin panel at: [http://localhost:3000/em-admin-panel-x9k7](http://localhost:3000/em-admin-panel-x9k7)
 
 ---
 
@@ -130,7 +129,7 @@ ecomate/
 │   │   └── settings/               # Profile + password + plan
 │   ├── checkout/
 │   │   └── page.tsx                # Plan selection + payment
-│   └── admin-xm9k2/               # 🔐 SECRET ADMIN URL
+│   └── em-admin-panel-x9k7/        # 🔐 SECRET ADMIN URL
 │       ├── login/page.tsx          # Admin sign in
 │       └── dashboard/
 │           ├── page.tsx            # Admin overview
@@ -173,7 +172,7 @@ ecomate/
 | `/auth/forgot-password` | Request password reset |
 | `/dashboard` | Client dashboard (auth required) |
 | `/checkout` | Plan upgrade (auth required) |
-| `/admin-xm9k2` | 🔐 Admin panel (admin role required) |
+| `/em-admin-panel-x9k7` | 🔐 Admin panel (admin role required) |
 
 ---
 
@@ -230,17 +229,28 @@ In Supabase → Authentication → URL Configuration:
 
 ---
 
-## 📤 Push to GitHub
+---
 
-```bash
-git init
-git add .
-git commit -m "feat: initial EcoMate full-stack platform"
+## 🚀 Professional "Fresh Start" Migration
 
-# Create repo on github.com then:
-git remote add origin https://github.com/YOUR_USERNAME/ecomate.git
-git push -u origin main
-```
+If you are migrating from a previous version to resolve production issues:
+
+1. **Clean Git History:**
+   ```bash
+   rm -rf .git
+   git init
+   git add .
+   git commit -m "EcoMate: Professional v1.0 Production Release"
+   ```
+
+2. **Create & Link New Repository:**
+   - Create a fresh repo on GitHub (e.g., `ecomate-pro`).
+   - `git remote add origin https://github.com/abdelbadie-kertimi/ecomate-pro.git`
+   - `git push -u origin main`
+
+3. **Deploy to Fresh Vercel Project:**
+   - Connect the new repository in Vercel to bypass old build caches.
+   - Ensure Env Vars are identical to your Supabase settings.
 
 ---
 

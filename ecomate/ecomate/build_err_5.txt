@@ -1,0 +1,107 @@
+﻿
+> ecomate@1.0.0 build
+> next build
+
+Γû▓ Next.js 16.2.1 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+node.exe : Turbopack 
+build encountered 1 
+warnings:
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (T  
+  urbopack build encoun   
+ tered 1 warnings::Str    
+ing) [], RemoteExcept    
+ion
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+[next]/internal/font/googl
+e/1bffadaabf893a1e-s.woff2
+Error while requesting 
+resource
+There was an issue 
+requesting https://fonts.g
+static.com/s/inter/v20/UcC
+73FwrK3iLTeHuS_nVMrMxCp50S
+jIa25L7W0Q5n-wU.woff2
+
+
+
+> Build error occurred
+Error: Turbopack build 
+failed with 1 errors:
+[next]/internal/font/googl
+e/inter_5901b7c6.module.cs
+s:52:8
+Module not found: Can't 
+resolve '@vercel/turbopack
+-next/internal/font/google
+/font'
+  [90m50 |[0m   
+font-weight: [35m100[0m 
+[35m900[0m;
+  [90m51 |[0m   
+font-display: swap;
+[31m[1m>[0m [90m52 
+|[0m   src: url(@vercel/t
+urbopack-next/internal/fon
+t/google/font?{%[35m22[0
+murl%[35m22[0m:%[35m22
+[0mhttps:[90m//fonts.gs..
+.[0m
+  [90m   |[0m        
+[31m[1m^[0m
+  [90m53 |[0m   
+unicode-range: [33mU[0m+
+[35m0100[0m-[35m02[0m
+[33mBA[0m, [33mU[0m+[3
+5m02[0m[33mBD[0m-[35m0
+2[0m[33mC5[0m, [33mU[
+0m+[35m02[0m[33mC7[0m-
+[35m02[0m[33mCC[0m, [
+33mU[0m+[35m02[0m[33mC
+E[0m-[35m02[0m[33mD7[
+0m, [33mU[0m+[35m02[0m
+[33mDD[0m-[35m02[0m[3
+3mFF[0m, 
+[33mU[0m+[35m0304[0m, 
+[33m.[0m.[35m.[0m
+  [90m54 |[0m }
+  [90m55 |[0m [90m/* 
+latin */[0m
+
+Import map: Resolved by 
+import map
+
+
+Import trace:
+  Server Component:
+    [next]/internal/font/g
+oogle/inter_5901b7c6.modul
+e.css
+    [next]/internal/font/g
+oogle/inter_5901b7c6.js
+    ./app/layout.tsx
+
+https://nextjs.org/docs/me
+ssages/module-not-found
+
+
+    at <unknown> ([next]/i
+nternal/font/google/inter_
+5901b7c6.module.css:52:8)
+    at <unknown> (https://
+nextjs.org/docs/messages/m
+odule-not-found)

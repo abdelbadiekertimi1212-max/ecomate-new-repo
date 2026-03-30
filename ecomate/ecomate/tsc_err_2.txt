@@ -1,0 +1,14 @@
+﻿.next/dev/types/validator.ts(25,44): error TS2344: Type 'Route' does not satisfy the constraint 'LayoutRoutes'.
+  Type 'import("C:/Users/abdel/Desktop/ecomate claude/ecomate/ecomate/.next/dev/types/routes").LayoutRoutes' is not assignable to type 'import("C:/Users/abdel/Desktop/ecomate claude/ecomate/ecomate/.next/types/routes").LayoutRoutes'.
+    Type '"/admin"' is not assignable to type 'LayoutRoutes'.
+.next/dev/types/validator.ts(25,75): error TS2344: Type 'Route' does not satisfy the constraint 'LayoutRoutes'.
+  Type 'import("C:/Users/abdel/Desktop/ecomate claude/ecomate/ecomate/.next/dev/types/routes").LayoutRoutes' is not assignable to type 'import("C:/Users/abdel/Desktop/ecomate claude/ecomate/ecomate/.next/types/routes").LayoutRoutes'.
+    Type '"/admin"' is not assignable to type 'LayoutRoutes'.
+.next/dev/types/validator.ts(53,39): error TS2307: Cannot find module '../../../app/admin/checkouts/page.js' or its corresponding type declarations.
+.next/dev/types/validator.ts(62,39): error TS2307: Cannot find module '../../../app/admin/clients/page.js' or its corresponding type declarations.
+.next/dev/types/validator.ts(71,39): error TS2307: Cannot find module '../../../app/admin/page.js' or its corresponding type declarations.
+.next/dev/types/validator.ts(80,39): error TS2307: Cannot find module '../../../app/admin/partners/page.js' or its corresponding type declarations.
+.next/dev/types/validator.ts(89,39): error TS2307: Cannot find module '../../../app/admin/plans/page.js' or its corresponding type declarations.
+.next/dev/types/validator.ts(98,39): error TS2307: Cannot find module '../../../app/admin/reviews/page.js' or its corresponding type declarations.
+.next/dev/types/validator.ts(107,39): error TS2307: Cannot find module '../../../app/admin/services/page.js' or its corresponding type declarations.
+.next/dev/types/validator.ts(264,39): error TS2307: Cannot find module '../../../app/admin/layout.js' or its corresponding type declarations.

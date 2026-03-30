@@ -6,7 +6,7 @@ import { createClient } from '@/lib/supabase/server'
 export const dynamic = 'force-dynamic'
 
 export default async function ContactPage() {
-  const supabase = createClient()
+  const supabase = await createClient()
   const { data: contactSettings } = await supabase.from('contact_settings').select('*').single()
 
   const salesEmail = contactSettings?.sales_email || 'sales@ecomate.dz'

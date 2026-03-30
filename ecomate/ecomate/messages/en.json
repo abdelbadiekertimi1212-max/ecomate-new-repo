@@ -1,0 +1,179 @@
+{
+  "Nav": {
+    "features": "Features",
+    "aiSystem": "AI System",
+    "pricing": "Pricing",
+    "howItWorks": "How It Works",
+    "reviews": "Reviews",
+    "dashboard": "Dashboard",
+    "signIn": "Sign In",
+    "bookDemo": "Book a Demo"
+  },
+  "Hero": {
+    "badge": "Algeria's Leading AI-Omni Sync Platform ⚡",
+    "h1_1": "Synchronize",
+    "h1_2": "Social Sales.",
+    "h1_3": "We automate the",
+    "h1_highlight": "DMs.",
+    "sub": "EcoMate connects your Instagram, Facebook, and WhatsApp orders directly to your dashboard. High-converting AI chatbots synced with ManyChat and Yalidine — built for Algerian SMEs.",
+    "bookDemo": "Book a Demo",
+    "aiPreview": "Live AI Preview",
+    "stats": {
+      "aiResponse": "AI response rate",
+      "automation": "Always-on automation",
+      "missedOrders": "Missed orders"
+    },
+    "revenueCard": {
+      "title": "Revenue Today",
+      "increase": "↑ +23.4% vs yesterday"
+    },
+    "orderCard": {
+      "title": "New Order ✅",
+      "orderLabel": "Order",
+      "confirmedBy": "Confirmed by AI · 2 min ago"
+    },
+    "rateCard": {
+      "title": "AI Response Rate",
+      "messagesHandled": "← 3.4k messages handled"
+    }
+  },
+  "Sections": {
+    "Integrations": {
+      "badge": "Connects seamlessly with the platforms your customers already use",
+      "social": "Where your customers message you",
+      "delivery": "Shipping partners across all wilayas",
+      "tools": "Keep using the tools you love"
+    },
+    "Features": {
+      "badge": "Everything You Need",
+      "title1": "All-in-one platform.",
+      "title2": "Zero fragmentation.",
+      "sub": "EcoMate brings every capability into one seamless, affordable system — powered by real AI, built for real results.",
+      "items": {
+        "s1": {"title": "AI Sales Chatbot", "desc": "Automate conversations on IG & FB — from first message to order.", "icon": "Bot"},
+        "s2": {"title": "EcoTrack Fulfillment", "desc": "Real-time delivery tracking across 58 Wilayas via Yalidine.", "icon": "Package"},
+        "s3": {"title": "ePayment Integration", "desc": "Secure digital payment flows built for the Algerian market.", "icon": "CreditCard"},
+        "s4": {"title": "Web Development", "desc": "Custom e-commerce sites and landing pages built to convert.", "icon": "Code2"},
+        "s5": {"title": "Landing Pages", "desc": "High-converting campaign pages designed and deployed fast.", "icon": "Layout"},
+        "s6": {"title": "Content & Stock", "desc": "Product photography and inventory organization in one place.", "icon": "Archive"},
+        "s7": {"title": "Creative Studio", "desc": "Branding, graphic design, and ad creatives for your brand.", "icon": "Palette"},
+        "s8": {"title": "Marketing & Growth", "desc": "Social media management and strategies for Algerian behavior.", "icon": "TrendingUp"}
+      }
+    },
+    "How": {
+      "badge": "Simple Process",
+      "title1": "From zero to selling",
+      "title2": "in 4 steps.",
+      "sub": "We handle the complexity so you can focus on growing your business.",
+      "steps": {
+        "s1": {"title": "Tell Us Your Business", "desc": "Sign up and describe your activity. A quick onboarding call takes under 30 minutes."},
+        "s2": {"title": "We Set Everything Up", "desc": "Our team configures your AI chatbot, catalog, and dashboard."},
+        "s3": {"title": "Connect Your Channels", "desc": "Link your social pages and delivery partner in one click."},
+        "s4": {"title": "Launch & Scale", "desc": "Go live. Your AI handles orders 24/7."}
+      }
+    },
+    "Dashboard": {
+      "badge": "Live Dashboard",
+      "title1": "Your entire business.",
+      "title2": "One screen.",
+      "sub": "Real-time order tracking, revenue monitoring, and customer insights."
+    },
+    "AI": {
+      "badge": "Omni-Sync Engine",
+      "title1": "Sell on Social",
+      "title2": "without Lifting a Finger.",
+      "sub": "Our AI Sync Engine bridges ManyChat and your EcoMate Dashboard. It handles the full journey—from DM greeting to Yalidine tracking.",
+      "features": [
+        {"title": "Real-time DM Sync", "desc": "Every conversation on IG & FB is mirrored in your EcoMate CRM instantly."},
+        {"title": "Automated Catalog", "desc": "AI presents your products in chat as rich galleries. Real-time stock sync."},
+        {"title": "Instant Order Ingestion", "desc": "Orders picked up by the AI are logged and ready for Yalidine in 1 click."},
+        {"title": "Automated Logistics", "desc": "Auto-sync with Yalidine for zero-manual-entry fulfillment across all wilayas."}
+      ],
+      "cta": "Explore the Sync Engine"
+    },
+    "Pricing": {
+      "badge": "Transparent Pricing",
+      "title1": "Plans that",
+      "title2": "scale with you.",
+      "sub": "Select a service to view available packs.",
+      "services": {
+        "creative": {
+          "title": "Creative Studio",
+          "icon": "🎬",
+          "packs": {
+            "starter": {"name": "Starter", "desc": "4 vids/mo", "price": "14,900 DA", "cta": "Contact Us"},
+            "growth": {"name": "Growth", "desc": "8 vids/mo", "price": "24,900 DA", "cta": "Contact Us"},
+            "pro": {"name": "Pro", "desc": "12 vids/mo", "price": "34,900 DA", "cta": "Contact Us"}
+          }
+        },
+        "chatbot": {
+          "title": "AI Chatbot Sales",
+          "icon": "🤖",
+          "packs": {
+            "basic": {"name": "Basic", "desc": "Setup & Training", "price": "8,900 DA/mo", "cta": "Contact Us"},
+            "pro": {"name": "Pro", "desc": "Full Automation", "price": "15,900 DA/mo", "cta": "Contact Us"},
+            "agency": {"name": "Agency", "desc": "Dedicated Support", "price": "24,900 DA/mo", "cta": "Contact Us"}
+          }
+        }
+      }
+    },
+    "CTA": {
+      "title1": "Ready to build your",
+      "title2": "digital business?",
+      "sub": "Join Algerian merchants already automating their sales.",
+      "btn1": "Contact Sales ↗",
+      "btn2": "📞 Talk to Our Team",
+      "footer": "Built at University of Bouira Startup Incubator · 🇩🇿 Made in Algeria"
+    },
+    "Footer": {
+      "desc": "The all-in-one SaaS platform helping Algerian SMEs build automated, scalable digital businesses."
+    }
+  },
+  "Auth": {
+    "Register": {
+      "title": "Build your Empire",
+      "p": "Join the elite network of Algerian businesses streamlining their operations today.",
+      "form": {
+        "btn_continue": "Continue →",
+        "btn_create": "Create Account →",
+        "creating": "Creating account...",
+        "success": "Account created! Please verify your email.",
+        "error_match": "Passwords do not match",
+        "error_terms": "Please accept the terms",
+        "error_length": "Password must be at least 8 characters"
+      }
+    }
+  },
+  "Legal": {
+    "Privacy": {
+      "title": "Privacy Policy",
+      "p1": "At EcoMate, we are committed to protecting your business and customer data under international standards and local Algerian regulations.",
+      "sections": [
+        {"h": "Data Collection", "p": "We collect data necessary for providing AI sales automation, including social media IDs, contact info, and transaction details."},
+        {"h": "Data Security", "p": "Your data is encrypted and stored in secure Supabase environments with strict access controls."},
+        {"h": "Third Party Sharing", "p": "We do not sell your data. We only share it with essential partners like Chargily (Payments) and Yalidine (Fulfillment) to fulfill your service requests."}
+      ]
+    },
+    "Terms": {
+      "title": "Terms of Service",
+      "p1": "By using EcoMate, you agree to our terms for B2B SaaS usage in Algeria.",
+      "sections": [
+        {"h": "Subscription", "p": "Plans are billed monthly or annually. Failure to pay will result in service suspension after a 7-day grace period."},
+        {"h": "Usage Policy", "p": "You are responsible for all content sent via your AI chatbot. Illegal or spam activities will lead to account termination."},
+        {"h": "Fulfillment Responsibility", "p": "EcoMate provides the software bridge to Yalidine. Physical delivery issues remain subject to Yalidine's merchant terms."}
+      ]
+    }
+  },
+  "Errors": {
+    "404": {
+      "title": "Page Not Found",
+      "sub": "The page you are looking for does not exist or has been moved.",
+      "btn": "Back to Dashboard"
+    },
+    "Global": {
+      "title": "Something went wrong",
+      "sub": "A critical error occurred. Our engineers have been notified.",
+      "btn": "Try Again"
+    }
+  }
+}

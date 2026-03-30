@@ -33,10 +33,13 @@ function LoginContent() {
 
     if (user) {
       const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single()
-      if (profile?.role === 'admin') {
-        toast.success('Welcome back, Admin!')
-        router.push('/admin-xm9k2/dashboard')
-        router.refresh()
+      const isAdmin = profile?.role === 'admin'
+      
+      if (isAdmin) {
+        // Security: Do not allow admin login via public portal
+        await supabase.auth.signOut()
+        toast.error('Invalid credentials or unauthorized access.')
+        setLoading(false)
         return
       }
     }
@@ -47,12 +50,12 @@ function LoginContent() {
   }
 
   return (
-    <div style={{
-      minHeight: '100vh', display: 'grid', gridTemplateColumns: '1fr 1fr',
+    <div className="login-layout" style={{
+      minHeight: '100vh', display: 'grid',
       background: 'var(--bg-body)',
     }}>
       {/* Left — Brand */}
-      <div style={{
+      <div className="login-brand-side" style={{
         background: 'linear-gradient(145deg,#1E3A8A 0%,#1d4ed8 55%,#0a1020 100%)',
         padding: '48px 44px', display: 'flex', flexDirection: 'column',
         justifyContent: 'space-between', position: 'relative', overflow: 'hidden',
@@ -215,9 +218,10 @@ function LoginContent() {
 
       <style>{`
         @keyframes spin { to { transform: rotate(360deg); } }
+        .login-layout { grid-template-columns: 1fr 1fr; }
         @media(max-width:700px) {
-          div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr; }
-          div[style*="gradient(145deg"] { display: none; }
+          .login-layout { grid-template-columns: 1fr; }
+          .login-brand-side { display: none !important; }
         }
       `}</style>
     </div>

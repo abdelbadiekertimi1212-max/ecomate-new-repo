@@ -31,12 +31,15 @@ export default function Reviews({ reviews: initialReviews }: { reviews: any[] })
 
   useEffect(() => {
     const supabase = createClient()
-    supabase.auth.getUser().then(async ({ data }) => {
-      if (!data.user) return
-      setUser(data.user)
-      const { data: p } = await supabase.from('profiles').select('*').eq('id', data.user.id).single()
-      setProfile(p)
-      setForm(f => ({ ...f, plan_used: p?.plan || '' }))
+    supabase.auth.getUser().then(async ({ data: authData }) => {
+      if (!authData.user) return
+      setUser(authData.user)
+      
+      const { data: p } = await supabase.from('profiles').select('*').eq('id', authData.user.id).single()
+      if (p) {
+        setProfile(p)
+        setForm(f => ({ ...f, plan_used: p.plan || '' }))
+      }
     })
   }, [])
 
@@ -49,13 +52,19 @@ export default function Reviews({ reviews: initialReviews }: { reviews: any[] })
     const { error } = await supabase.from('reviews').insert({
       user_id: user.id,
       reviewer_name: profile?.full_name || 'Anonymous',
+      author_name: profile?.full_name || 'Anonymous', // Added for schema compatibility
       business_name: profile?.business_name || '',
       rating: form.rating,
       content: form.content,
-      plan_used: form.plan_used,
+      plan_slug: form.plan_used || 'trial',
       is_approved: false,
     })
-    if (error) { toast.error(error.message); setSubmitting(false); return }
+    if (error) { 
+      console.error('Review Error:', error)
+      toast.error('Submission failed: ' + (error.message || 'Check database schema'))
+      setSubmitting(false) 
+      return 
+    }
     setSubmitted(true)
     setShowForm(false)
     setSubmitting(false)
@@ -127,7 +136,7 @@ export default function Reviews({ reviews: initialReviews }: { reviews: any[] })
                     <div style={{ fontFamily: 'var(--font-poppins)', fontSize: 13.5, fontWeight: 700, color: 'var(--text-main)' }}>{r.reviewer_name}</div>
                     <div style={{ fontSize: 11.5, color: 'var(--text-muted)' }}>
                       {r.business_name || 'EcoMate User'}
-                      {r.plan_used && ` · ${r.plan_used.charAt(0).toUpperCase() + r.plan_used.slice(1)} Plan`}
+                      {(r.plan_slug || r.plan_used) && ` · ${(r.plan_slug || r.plan_used).charAt(0).toUpperCase() + (r.plan_slug || r.plan_used).slice(1)} Plan`}
                     </div>
                   </div>
                 </div>
@@ -171,7 +180,9 @@ export default function Reviews({ reviews: initialReviews }: { reviews: any[] })
 
               <div style={{ background: 'rgba(37,99,235,.06)', border: '1px solid rgba(37,99,235,.15)', borderRadius: 10, padding: '12px 14px', fontSize: 12.5, color: 'rgba(255,255,255,.45)' }}>
                 <div style={{ fontWeight: 600, color: 'rgba(255,255,255,.7)', marginBottom: 4 }}>Submitting as:</div>
-                <div>{profile?.full_name} · {profile?.business_name || 'EcoMate User'} · {profile?.plan?.charAt(0).toUpperCase() + profile?.plan?.slice(1)} Plan</div>
+                <div style={{ fontSize: 12 }}>
+                   {profile?.full_name || 'Anonymous'} · {profile?.business_name || 'EcoMate User'} · {((profile?.plan || 'trial')).charAt(0).toUpperCase() + (profile?.plan || 'trial').slice(1)} Plan
+                </div>
               </div>
 
               <div style={{ display: 'flex', gap: 10 }}>

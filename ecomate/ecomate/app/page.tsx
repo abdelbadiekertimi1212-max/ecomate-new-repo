@@ -28,7 +28,7 @@ const FALLBACK_PARTNERS = [
 ]
 
 export default async function HomePage() {
-  const supabase = createClient()
+  const supabase = await createClient()
 
   const [
     { data: reviews }, 
@@ -38,8 +38,8 @@ export default async function HomePage() {
   ] = await Promise.all([
     supabase.from('reviews').select('*').eq('is_approved', true).order('created_at', { ascending: false }).limit(9),
     supabase.from('partners').select('*').order('row_num').order('sort_order'),
-    supabase.from('services').select('*').eq('is_active', true).order('created_at', { ascending: true }),
-    supabase.from('plans').select('*').order('sort_order', { ascending: true })
+    supabase.from('services').select('id, name, description, icon, tag, tag_color, is_active, sort_order').eq('is_active', true).order('sort_order', { ascending: true }),
+    supabase.from('plans').select('id, name, price, period, description, features, cta_text, color, is_popular, active, sort_order').order('sort_order', { ascending: true })
   ])
 
   const partners = dbPartners && dbPartners.length > 0 ? dbPartners : FALLBACK_PARTNERS
@@ -51,7 +51,7 @@ export default async function HomePage() {
       <Hero />
       <Integrations />
       <Partners partners={partners} />
-      <Features services={services || []} />
+      <Features />
       <HowItWorks />
       <DashboardPreview />
       <AISection />

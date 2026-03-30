@@ -1,20 +1,30 @@
-import { createServerClient } from '@supabase/ssr'
+import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
-  let supabaseResponse = NextResponse.next({ request })
+  let response = NextResponse.next({
+    request: {
+      headers: request.headers,
+    },
+  })
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        getAll() { return request.cookies.getAll() },
-        setAll(cookiesToSet: { name: string, value: string, options: any }[]) {
-          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
-          supabaseResponse = NextResponse.next({ request })
+        getAll() {
+          return request.cookies.getAll()
+        },
+        setAll(cookiesToSet: { name: string; value: string; options: CookieOptions }[]) {
+          cookiesToSet.forEach(({ name, value }) =>
+            request.cookies.set(name, value)
+          )
+          response = NextResponse.next({
+            request,
+          })
           cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
+            response.cookies.set(name, value, options)
           )
         },
       },
@@ -22,40 +32,44 @@ export async function middleware(request: NextRequest) {
   )
 
   const { data: { user } } = await supabase.auth.getUser()
-  const path = request.nextUrl.pathname
 
-  // Protected dashboard routes
-  if (path.startsWith('/dashboard') && !user) {
-    return NextResponse.redirect(new URL('/auth/login', request.url))
-  }
-
-  // Protected admin routes — only accessible with admin role
-  if (path.startsWith('/admin-xm9k2/dashboard')) {
-    if (!user) {
-      return NextResponse.redirect(new URL('/admin-xm9k2/login', request.url))
+  // 1. Protect Admin Panel (Hardened Exclusivity)
+  if (request.nextUrl.pathname.startsWith('/em-admin-panel-x9k7')) {
+    if (!user || user.email !== 'abdelbadie.kertimi1212@gmail.com') {
+      return NextResponse.redirect(new URL('/auth/login', request.url))
     }
-    // Check admin role
-    const { data: profile } = await supabase
-      .from('profiles')
+
+    // Double-check admin role in database for audit integrity
+    const { data: adminRole } = await supabase
+      .from('admin_roles')
       .select('role')
-      .eq('id', user.id)
+      .eq('user_id', user.id)
       .single()
 
-    if (!profile || profile.role !== 'admin') {
+    if (!adminRole || !['admin', 'super_admin'].includes(adminRole.role)) {
       return NextResponse.redirect(new URL('/', request.url))
     }
   }
 
-  // Redirect auth pages if already logged in
-  if (path.startsWith('/auth/') && user) {
-    return NextResponse.redirect(new URL('/dashboard', request.url))
+  // 2. Protect Client Dashboard
+  if (request.nextUrl.pathname.startsWith('/dashboard')) {
+    if (!user) {
+      return NextResponse.redirect(new URL('/auth/login', request.url))
+    }
   }
 
-  return supabaseResponse
+  return response
 }
 
 export const config = {
   matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * Feel free to modify this pattern to include more paths.
+     */
     '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 }

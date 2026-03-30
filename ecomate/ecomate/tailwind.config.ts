@@ -18,6 +18,7 @@ const config: Config = {
       fontFamily: {
         poppins: ['var(--font-poppins)', 'sans-serif'],
         inter: ['var(--font-inter)', 'sans-serif'],
+        cairo: ['var(--font-cairo)', 'sans-serif'],
       },
       animation: {
         'fade-up': 'fadeUp 0.6s ease forwards',

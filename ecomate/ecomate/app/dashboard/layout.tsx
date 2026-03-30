@@ -3,7 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import DashboardSidebar from '@/components/dashboard/Sidebar'
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const supabase = createClient()
+  const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/auth/login')
 
@@ -15,7 +15,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg-body)' }}>
-      <DashboardSidebar profile={profile} />
+      <DashboardSidebar profile={profile} userEmail={user.email} />
       <main style={{ flex: 1, overflow: 'auto', padding: '32px 36px' }}>
         {children}
       </main>

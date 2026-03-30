@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 
 export default async function DashboardPage() {
-  const supabase = createClient()
+  const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
   const [{ data: profile }, { data: orders }, { data: products }] = await Promise.all([
@@ -19,6 +19,8 @@ export default async function DashboardPage() {
     ? Math.max(0, Math.ceil((new Date(profile.trial_ends_at).getTime() - Date.now()) / 86400000))
     : 0
 
+  const growthPlan = (await supabase.from('plans').select('price').eq('name', 'Growth').single()).data
+
   const stats = [
     { label: 'Total Revenue', value: `${totalRevenue.toLocaleString()} DA`, change: '', icon: '💰', color: '#10B981' },
     { label: 'Orders Today', value: todayOrders.toString(), change: 'This month', icon: '📦', color: '#2563eb' },
@@ -31,7 +33,7 @@ export default async function DashboardPage() {
       {/* Header */}
       <div style={{ marginBottom: 32 }}>
         <h1 style={{ fontFamily: 'var(--font-poppins)', fontSize: 26, fontWeight: 800, color: 'var(--text-main)', marginBottom: 6 }}>
-          Good morning, {profile?.full_name?.split(' ')[0] || 'there'} 👋
+          Good morning, {profile?.full_name?.split(' ')[0] || 'Client'} 👋
         </h1>
         <p style={{ fontSize: 14, color: 'var(--text-muted)' }}>Here's what's happening with your store today.</p>
       </div>
@@ -51,7 +53,7 @@ export default async function DashboardPage() {
             <div style={{ fontSize: 12.5, color: 'rgba(255,255,255,.45)' }}>Upgrade to Growth to unlock CRM, Analytics & AI Growth Agent</div>
           </div>
           <Link href="/checkout" className="btn-primary" style={{ padding: '10px 22px', fontSize: 13 }}>
-            Upgrade Now — 4,900 DA/mo →
+            Upgrade Now — {growthPlan?.price?.toLocaleString() || '4,900'} DA/mo →
           </Link>
         </div>
       )}
