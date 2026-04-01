@@ -424,9 +424,9 @@ export async function CTA() {
         {t('sub')}
       </p>
       <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap', position: 'relative' }}>
-        <a href="mailto:contact@ecomate.dz" style={{ display: 'inline-flex', alignItems: 'center', gap: 9, fontFamily: 'var(--font-poppins), var(--font-cairo)', fontSize: 15, fontWeight: 700, color: '#07101f', background: 'linear-gradient(135deg,#fff,#e2e8f0)', borderRadius: 12, padding: '15px 34px', boxShadow: '0 4px 24px rgba(0,0,0,.3)', transition: 'all .25s', textDecoration: 'none' }}>
+        <Link href="/auth/signup" style={{ display: 'inline-flex', alignItems: 'center', gap: 9, fontFamily: 'var(--font-poppins), var(--font-cairo)', fontSize: 15, fontWeight: 700, color: '#07101f', background: 'linear-gradient(135deg,#fff,#e2e8f0)', borderRadius: 12, padding: '15px 34px', boxShadow: '0 4px 24px rgba(0,0,0,.3)', transition: 'all .25s', textDecoration: 'none' }}>
           {t('btn1')}
-        </a>
+        </Link>
         <a href="https://wa.me/213555000000" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 9, fontFamily: 'var(--font-poppins), var(--font-cairo)', fontSize: 15, fontWeight: 600, color: 'rgba(255,255,255,.8)', background: 'rgba(255,255,255,.07)', border: '1.5px solid rgba(255,255,255,.15)', borderRadius: 12, padding: '15px 30px', transition: 'all .25s', textDecoration: 'none' }}>
           {t('btn2')}
         </a>
@@ -450,10 +450,14 @@ export async function Footer() {
               <span style={{ background: 'linear-gradient(135deg,#2563eb,#10B981)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Mate</span>
             </div>
             <p style={{ fontSize: 13.5, color: 'rgba(255,255,255,.35)', lineHeight: 1.8, marginBottom: 24 }}>{t('desc')}</p>
-            <div style={{ display: 'flex', gap: 10 }}>
+            <div style={{ display: 'flex', gap: 10, marginBottom: 24 }}>
               {['📘', '📸', '💬', '💼'].map((s, i) => (
                 <a key={i} href="#" style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(255,255,255,.04)', border: '1px solid rgba(255,255,255,.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 15, transition: 'all .2s' }}>{s}</a>
               ))}
+            </div>
+            <div style={{ display: 'flex', gap: 20 }}>
+              <Link href="/privacy" style={{ fontSize: 12, color: 'rgba(255,255,255,.3)', textDecoration: 'none', transition: 'color .2s' }}>Privacy Policy</Link>
+              <Link href="/terms" style={{ fontSize: 12, color: 'rgba(255,255,255,.3)', textDecoration: 'none', transition: 'color .2s' }}>Terms of Service</Link>
             </div>
           </div>
         </div>

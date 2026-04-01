@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast'
 import './globals.css'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getLocale } from 'next-intl/server'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 
 // System Font Stacks (Bypassing Google Fonts for offline build stability)
 const poppinsFont = "font-sans"
@@ -62,6 +63,10 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
 }
 
 export default async function RootLayout({ 
@@ -78,6 +83,7 @@ export default async function RootLayout({
     <html lang={locale} dir={isArabic ? 'rtl' : 'ltr'} data-theme="dark" suppressHydrationWarning>
       <body className={`${poppinsFont} ${interFont} ${cairoFont} ${isArabic ? 'font-cairo' : 'font-inter'}`}>
         <NextIntlClientProvider messages={messages} locale={locale}>
+          <GoogleAnalytics ga_id={process.env.GA_ID || 'G-XXXXXXXXXX'} />
           <Toaster
             position="top-right"
             toastOptions={{
