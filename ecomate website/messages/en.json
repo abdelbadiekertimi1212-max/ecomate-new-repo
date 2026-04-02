@@ -1,0 +1,710 @@
+{
+  "Nav": {
+    "features": "Features",
+    "aiSystem": "AI System",
+    "pricing": "Pricing",
+    "howItWorks": "How it Works",
+    "reviews": "Reviews",
+    "dashboard": "Dashboard",
+    "signIn": "Sign In",
+    "bookDemo": "Book a Demo",
+    "notes": "Order Notes",
+    "discard": "Discard",
+    "create": "Create Order ←",
+    "creating": "Creating..."
+  },
+  "Hero": {
+    "badge": "Algeria's #1 AI-Powered Omni-Sync Platform ⚡",
+    "h1_1": "Sync your",
+    "h1_2": "Social Sales.",
+    "h1_3": "We automate the",
+    "h1_highlight": "DMs.",
+    "sub": "EcoMate connects your Instagram, Facebook, and WhatsApp orders directly to your dashboard. Smart Chatbots synced with ManyChat & Yalidine — built for Algerian SMEs.",
+    "bookDemo": "Book a Demo",
+    "aiPreview": "Live AI Preview",
+    "stats": {
+      "aiResponse": "AI Response Rate",
+      "automation": "24/7 Automation",
+      "missedOrders": "Missed Orders"
+    },
+    "revenueCard": {
+      "title": "Today's Revenue",
+      "increase": "↑ +23.4% from yesterday"
+    },
+    "orderCard": {
+      "title": "New Order ✅",
+      "orderLabel": "Order",
+      "confirmedBy": "AI Confirmed · 2m ago"
+    },
+    "rateCard": {
+      "title": "AI Response Rate",
+      "messagesHandled": "← 3.4k messages handled"
+    }
+  },
+  "Sections": {
+    "Partners": {
+      "title": "Trusted by Algeria's Forward-Thinking Brands"
+    },
+    "Integrations": {
+      "badge": "Seamlessly connects with platforms your customers already use",
+      "social": "Where your customers text you",
+      "delivery": "Delivery partners across all wilayas",
+      "tools": "Keep using the tools you love"
+    },
+    "reviews": {
+      "tag": "Real Results",
+      "title": "Trusted by",
+      "highlight": "Algerian Entrepreneurs.",
+      "subtitle": "Authentic feedback from real business owners across Algeria.",
+      "leaveReview": "⭐ Leave a Review",
+      "pending": "✅ Review submitted — Waiting for approval",
+      "empty": "Be the first to share your experience with EcoMate!",
+      "form": {
+        "title": "Share Your Experience ⭐",
+        "description": "Your review will appear on our homepage after approval.",
+        "rating": "Your Rating *",
+        "content": "Your Feedback *",
+        "placeholder": "Tell us how EcoMate changed your business...",
+        "charCount": "{count}/500 chars (min 20)",
+        "submittingAs": "Submitting as:",
+        "cancel": "Cancel",
+        "submit": "Submit Review ←",
+        "loading": "Submitting..."
+      }
+    },
+    "Features": {
+      "badge": "Everything You Need",
+      "title1": "One Integrated Platform.",
+      "title2": "Zero Friction.",
+      "sub": "EcoMate brings every capability into one seamless, affordable system — powered by real AI, designed for real results.",
+      "items": {
+        "s1": {
+          "title": "AI Sales Chatbot",
+          "desc": "Automate customer conversations 24/7 on Instagram and Facebook — from first hello to order confirmed.",
+          "icon": "Bot"
+        },
+        "s2": {
+          "title": "EcoTrack Fulfilment",
+          "desc": "Real-time order tracking across all 58 wilayas with native Yalidine API integration.",
+          "icon": "Package"
+        },
+        "s3": {
+          "title": "E-Payment Gateway",
+          "desc": "Secure, integrated digital payment systems tailored for the Algerian market.",
+          "icon": "CreditCard"
+        },
+        "s4": {
+          "title": "Web Development",
+          "desc": "Custom E-commerce stores and high-converting landing pages built for performance.",
+          "icon": "Code2"
+        },
+        "s5": {
+          "title": "Landing Pages",
+          "desc": "Single-purpose, high-conversion campaign pages designed and deployed in record time.",
+          "icon": "Layout"
+        },
+        "s6": {
+          "title": "In-House Fulfilment",
+          "desc": "Stock management and storage solutions for merchants who want hands-off operations.",
+          "icon": "Archive"
+        },
+        "s7": {
+          "title": "Creative Studio",
+          "desc": "Professional UGC, product photography, and high-impact ads that make your brand pop.",
+          "icon": "Palette"
+        },
+        "s8": {
+          "title": "Marketing & Growth",
+          "desc": "Social media management and paid ad strategies optimized for Algerian consumer behavior.",
+          "icon": "TrendingUp"
+        }
+      }
+    },
+    "How": {
+      "badge": "Simple Process",
+      "title1": "From zero to sales",
+      "title2": "in 4 steps.",
+      "sub": "We handle the technical complexity so you can focus on scaling your business.",
+      "steps": {
+        "s1": {"title": "Tell us about your business", "desc": "Register and describe your niche. A quick 30-min discovery call follows."},
+        "s2": {"title": "We set up everything", "desc": "Our team configures your AI bot, catalog, and dashboard sync."},
+        "s3": {"title": "Link your channels", "desc": "Connect your social pages and delivery partner with one click."},
+        "s4": {"title": "Scale and Grow", "desc": "Start selling. AI handles the orders while you watch the revenue grow."}
+      }
+    },
+    "Dashboard": {
+      "badge": "Live Dashboard",
+      "title1": "Your Entire Business.",
+      "title2": "On One Screen.",
+      "sub": "Real-time order tracking, revenue monitoring, and customer insights."
+    },
+    "AI": {
+      "badge": "Omni-Sync AI Engine",
+      "title1": "Sell on Social",
+      "title2": "Without Lifting a Finger.",
+      "sub": "Our proprietary AI Sync engine bridges ManyChat and EcoMate. It handles the entire journey — from greeting to Yalidine tracking.",
+      "features": [
+        {"title": "Real-time DM Sync", "desc": "Every conversation on IG and FB is mirrored in your EcoMate CRM instantly."},
+        {"title": "Automated Catalog", "desc": "AI presents your products in chat as rich galleries. Inventory syncs in real-time."},
+        {"title": "Instant Order Capture", "desc": "Orders taken by AI are logged and ready for Yalidine with one click."},
+        {"title": "Automated Logistics", "desc": "Sync with Yalidine for immediate shipping without manual data entry."}
+      ],
+      "cta": "Explore Sync Engine"
+    },
+    "Pricing": {
+      "badge": "Transparent Pricing",
+      "title1": "Pick what fits",
+      "title2": "your growth stage.",
+      "sub": "Choose a service to see available plans. All prices are HT.",
+      "vatNote": "All prices are HT (Excl. Tax)",
+      "services": {
+        "chatbot": {
+          "title": "AI Sales Bot",
+          "packs": {
+            "starter": {"name": "Starter", "price": "15,000", "unit": "DA/mo", "features": ["Bot Setup & Training", "IG & FB Sync", "Basic CRM"]},
+            "growth": {"name": "Growth", "price": "29,000", "unit": "DA/mo", "features": ["Full Automation", "Yalidine API Sync", "Advanced Catalog", "Priority Support"], "popular": true},
+            "pro": {"name": "Corporate", "price": "Custom", "unit": "", "features": ["Whitelabel Dashboard", "Custom API", "Dedicated Account Manager"]}
+          }
+        },
+        "fulfillment": {
+          "title": "EcoTrack",
+          "packs": {
+            "starter": {"name": "Starter", "price": "5,000", "unit": "DA/mo", "features": ["Real-time Tracking", "Yalidine API", "SMS Alerts"]},
+            "pro": {"name": "Business", "price": "12,000", "unit": "DA/mo", "features": ["Returns Management", "Advanced Analytics", "Multi-Warehouse"]}
+          }
+        },
+        "web": {
+          "title": "Web Dev",
+          "packs": {
+            "landing": {"name": "Landing", "price": "45,000", "unit": "DA", "features": ["High-Conv Page", "Fast Hosting", "SEO Optimization"]},
+            "full": {"name": "Full Store", "price": "95,000", "unit": "DA", "features": ["Next.js App", "Admin Panel", "Inventory Sync"]}
+          }
+        },
+        "creative": {
+          "title": "Creative",
+          "packs": {
+            "starter": {"name": "Starter", "price": "25,000", "unit": "DA/mo", "features": ["4 UGC Video Ads", "Graphic Design", "Brand Identity"]},
+            "growth": {"name": "Premium", "price": "55,000", "unit": "DA/mo", "features": ["12 UGC Videos", "Product Shooting", "Social Management"]}
+          }
+        },
+        "bundle": {
+          "title": "Agency Core",
+          "packs": {
+            "allIn": {"name": "Master Sync", "price": "120,000", "unit": "DA/mo", "features": ["Everything Above", "Growth Strategy", "Direct Consultant"], "badge": "Save 60%"}
+          }
+        }
+      }
+    },
+    "CTA": {
+      "title1": "Ready to build your",
+      "title2": "Social Empire?",
+      "sub": "Join the elite Algerian merchants already automating their sales.",
+      "btn1": "Book a Demo",
+      "btn2": "📞 Talk to our team",
+      "footer": "Built at University of Bouira Incubator · 🇩🇿 Made in Algeria"
+    },
+    "Footer": {
+      "desc": "The all-in-one Platform-as-a-Service helping Algerian companies build automated, scalable digital businesses."
+    }
+  },
+  "Auth": {
+    "Common": {
+      "email": "Email Address",
+      "password": "Password",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "businessName": "Business Name",
+      "phone": "Phone Number",
+      "backToHome": "Back to Home",
+      "footerBuilt": "Algeria Built"
+    },
+    "Login": {
+      "title": "Welcome back.",
+      "p": "Login to manage your orders, customers, and AI bot — all from one dashboard.",
+      "perks": [
+        "Intelligence chatbot across social platforms",
+        "Automated 24/7 order management",
+        "Real-time analytics and reporting"
+      ],
+      "form": {
+        "title": "Welcome back 👋",
+        "sub": "Log in to your EcoMate dashboard",
+        "btn_login": "Enter Dashboard",
+        "forgot": "Forgot Password?",
+        "no_account": "No account yet?",
+        "register": "Create one for free ←",
+        "logging_in": "Logging in...",
+        "welcome_back": "Welcome back!",
+        "store_waiting": "Your store is waiting.",
+        "verify_title": "Check your email!",
+        "verify_p": "We've sent a verification link. Please click it to activate your account (Check spam folder).",
+        "error_fill": "Please fill in all fields",
+        "error_verify": "Please verify your email first. Check your inbox!",
+        "error_admin": "Invalid login credentials or unauthorized access."
+      }
+    },
+    "Register": {
+      "title": "Build your Empire",
+      "p": "Join the elite network of Algerian businesses streamlining their operations today.",
+      "back": "← Back to Home",
+      "perks_h2_1": "Everything you need to",
+      "perks_h2_2": "Scale your Sales.",
+      "perks_p": "EcoMate isn't just a dashboard—it's your command center. Built for the modern Algerian merchant.",
+      "form": {
+        "firstName": "First Name",
+        "firstName_placeholder": "e.g. Youssef",
+        "lastName": "Last Name",
+        "lastName_placeholder": "e.g. Benmohamed",
+        "email": "Work Email",
+        "email_placeholder": "you@business.com",
+        "businessName": "Store Name",
+        "businessName_placeholder": "e.g. My Store DZ",
+        "phone": "Phone Number (WhatsApp)",
+        "phone_placeholder": "+213 5XX XX XX XX",
+        "password": "Password",
+        "password_placeholder": "Min. 8 characters",
+        "confirm": "Confirm Password",
+        "confirm_placeholder": "Repeat password",
+        "terms": "I agree to the Terms of Service and Privacy Policy for Algerian Merchants.",
+        "btn_back": "Go Back",
+        "btn_continue": "Continue ←",
+        "btn_create": "Create Account ←",
+        "creating": "Creating Account...",
+        "success": "Account created! Please verify your email.",
+        "error_match": "Passwords do not match",
+        "error_terms": "Please accept terms",
+        "error_length": "Password must be at least 8 characters",
+        "strength_weak": "Weak",
+        "strength_good": "Good",
+        "strength_strong": "Strong"
+      },
+      "builtFor": "Built for Success",
+      "perks_items": [
+        "Intelligence chatbot across social platforms",
+        "Automated 24/7 order management",
+        "Native Yalidine API Integration",
+        "Secure E-Payments with Chargily"
+      ],
+      "steps": {
+        "label": "Step {step} of {total}: {name}",
+        "s1": "Identity",
+        "s2": "Business",
+        "s3": "Security"
+      },
+      "signIn_p": "Already have an account?",
+      "signIn_link": "Log in here ←"
+    }
+  },
+  "Email": {
+    "Welcome": {
+      "subject": "Welcome to EcoMate Pro! 🚀",
+      "title": "Welcome to the Digital Frontier",
+      "sub": "Your business is now part of the fastest-growing network of merchants in Algeria. Let's get you set up.",
+      "onboardingTitle": "Your First 3 Steps",
+      "step1": "Confirm your email via the Supabase link sent to you.",
+      "step2": "Log in to your EcoMate Dashboard.",
+      "step3": "Connect your ManyChat to launch your Smart Store.",
+      "btn": "Go to Dashboard",
+      "footer": "Sent with ❤️ from the EcoMate Team | Made in Algeria 🇩🇿"
+    }
+  },
+  "Errors": {
+    "404": {
+      "title": "Page not found",
+      "sub": "The page you looking for doesn't exist or has been moved.",
+      "error": "Failed to initiate payment"
+    },
+    "Global": {
+      "title": "Something went wrong",
+      "sub": "A critical error occurred. Our engineers have been notified.",
+      "error": "Failed to load translations"
+    }
+  },
+  "Billing": {
+    "title": "Billing & Subscription",
+    "sub": "Manage your subscription, view invoices and upgrade your plan.",
+    "current_plan": "Current Plan",
+    "usage": "Usage & Limits",
+    "billing_history": "Billing History",
+    "upgrade": "Upgrade Now",
+    "manage": "Manage Subscription",
+    "status": {
+      "active": "Active",
+      "cancelled": "Cancelled",
+      "past_due": "Past Due",
+      "trialing": "Trialing"
+    },
+    "plans": {
+      "starter": "Starter",
+      "growth": "Growth",
+      "pro": "Corporate"
+    },
+    "checkout": {
+      "success": "Payment successful!",
+      "error": "Payment failed. Please try again."
+    }
+  },
+  "MyWebsite": {
+    "title": "Web Development",
+    "sub": "Track the progress of your custom Shopify store or Next.js site.",
+    "project_id": "Web Project #{id}",
+    "figma": "View Figma Mockup",
+    "live": "Live Site",
+    "steps": {
+      "kickoff": "Kickoff",
+      "design": "Design",
+      "development": "Dev",
+      "review": "Review",
+      "client_approval": "Approval",
+      "launched": "Live"
+    },
+    "empty": {
+      "title": "No active web projects",
+      "description": "Ready to scale? Book a call to start building your professional Shopify or Next.js store.",
+      "btn": "Book Consultation"
+    },
+    "loading": "Loading projects..."
+  },
+  "Creative": {
+    "title": "Creative Studio",
+    "sub": "Track your UGC content pipeline and video production.",
+    "drive": "Main Assets Drive",
+    "deliverables": "View Deliverables",
+    "steps": {
+      "briefing": "Briefing",
+      "filming": "Filming",
+      "editing": "Editing",
+      "delivered": "Delivered"
+    },
+    "revision": "Revision Request",
+    "empty": {
+      "title": "No creative projects yet",
+      "description": "Submit a creative brief or talk to your account manager to start producing UGC, product videos, and shootings.",
+      "btn": "Submit Creative Brief"
+    },
+    "loading": "Loading projects..."
+  },
+  "Integrations": {
+    "title": "Social Integrations",
+    "sub": "Securely connect your social platforms to the EcoMate AI Sales Sync.",
+    "form": {
+      "title": "Configuration Details",
+      "meta": "Meta Business ID",
+      "instagram": "Instagram Page Handle / ID",
+      "telegram": "Telegram Bot Token (Optional)",
+      "btn": "Submit Integration Details ←",
+      "saving": "Saving..."
+    },
+    "status": {
+      "label": "Sync Status",
+      "active": "Active",
+      "pending": "Pending Verification"
+    },
+    "why": {
+      "title": "Why we need this?",
+      "description": "EcoMate uses a managed infrastructure to power your AI chatbot. By providing these IDs, our staff can securely link your social pages to our master sync engine without requiring individual ManyChat accounts."
+    },
+    "steps": {
+      "title": "Next Steps:",
+      "s1": "1. Submit credentials",
+      "s2": "2. Admin verification (24h)",
+      "s3": "3. AI Sync activation"
+    },
+    "toasts": {
+      "success": "Integration details submitted. Our team will verify and activate your sync.",
+      "error": "Failed to update integrations."
+    }
+  },
+  "Settings": {
+    "title": "Settings",
+    "sub": "Manage your account, security and subscription.",
+    "tabs": {
+      "profile": "Profile",
+      "security": "Security",
+      "plan": "Plan"
+    },
+    "profile": {
+      "title": "Profile Information",
+      "email": "Email Address",
+      "full_name": "Full Name",
+      "business_name": "Business / Store Name",
+      "phone": "Phone Number",
+      "current_plan": "Current Plan",
+      "btn": "Save Changes",
+      "saving": "Saving..."
+    },
+    "security": {
+      "title": "Change Password",
+      "new": "New Password",
+      "confirm": "Confirm New Password",
+      "params": "Min. 8 characters",
+      "btn": "Update Password",
+      "updating": "Updating..."
+    },
+    "plan": {
+      "current": "Current Plan",
+      "popular": "Popular",
+      "free": "Free",
+      "custom": "Custom",
+      "contact": "Contact Sales",
+      "upgrade": "Upgrade →",
+      "pending": "PENDING APPROVAL"
+    },
+    "danger": {
+      "title": "Danger Zone",
+      "description": "This action will permanently delete your account and all your data. This cannot be undone.",
+      "btn": "Delete My Account",
+      "confirm": "Are you absolutely sure? This will delete all your data and cannot be undone."
+    },
+    "toasts": {
+      "profile_success": "Profile updated!",
+      "email_confirm": "Confirmation links sent to both old and new emails!",
+      "pw_success": "Password updated!",
+      "pw_error_match": "Passwords do not match",
+      "pw_error_length": "Password must be at least 8 characters",
+      "delete_success": "Account permanently deleted."
+    }
+  },
+  "Dashboard": {
+    "Sidebar": {
+      "dashboard": "Dashboard",
+      "orders": "Orders",
+      "products": "Products",
+      "inventory": "Inventory",
+      "customers": "Customers",
+      "ai_chatbot": "AI Chatbot",
+      "creative_studio": "Creative Studio",
+      "my_website": "My Website",
+      "analytics": "Analytics",
+      "social_link": "Social Link",
+      "delivery": "Delivery",
+      "billing": "Billing",
+      "settings": "Settings",
+      "logout": "Sign Out",
+      "trial": "Trial",
+      "growth": "Growth",
+      "business": "Business",
+      "upgrade_cta_growth": "Upgrade to Growth",
+      "upgrade_cta_contact": "Contact for Business",
+      "upgrade_sub_starter": "Unlock CRM, Analytics & AI Growth Agent",
+      "upgrade_sub_growth": "Scale with custom leads & priority support",
+      "price_mo": "4,900 DA/month →",
+      "plan_details": "Plan Details →",
+      "upgrade_error": "Upgrade to {plan} plan to access {label}"
+    },
+    "Home": {
+      "title": "Good morning, {name} 👋",
+      "sub": "Here's what's happening with your store today.",
+      "trial": {
+        "title": "{days} days left in your free trial",
+        "sub": "Upgrade to Growth to unlock CRM, Analytics & AI Growth Agent",
+        "btn": "Upgrade Now — {price} DA/mo →"
+      },
+      "stats": {
+        "revenue": "Total Revenue",
+        "orders_today": "Today's Orders",
+        "products": "Products",
+        "pending_cod": "Pending COD",
+        "month": "This Month",
+        "catalog": "In Catalog",
+        "awaiting": "Awaiting Shipping"
+      },
+      "orders": {
+        "title": "Recent Orders",
+        "view_all": "View All ←",
+        "empty_h3": "No orders yet",
+        "empty_p": "As soon as your AI bot is active, orders will appear here automatically.",
+        "col_order": "Order",
+        "col_customer": "Customer",
+        "col_total": "Total",
+        "col_status": "Status",
+        "col_date": "Date"
+      },
+      "actions": {
+        "add_product": "Add Product",
+        "add_product_sub": "Add items to catalog",
+        "ai_chatbot": "AI Sales Bot",
+        "ai_chatbot_sub": "Configure your assistant",
+        "settings": "Settings",
+        "settings_sub": "Manage account"
+      },
+      "support": {
+        "title": "Need help?",
+        "sub": "Connect with our support team on WhatsApp for instant onboarding help.",
+        "btn": "Contact Support"
+      },
+      "fallback_name": "Partner"
+    },
+    "AIHub": {
+      "title": "AI Sales Hub",
+      "sub": "Automate social sales and sync data across platforms.",
+      "tabs": {
+        "live": "Live Activity",
+        "connectivity": "Connectivity"
+      },
+      "feed": {
+        "title": "Social Sales Feed",
+        "managed": "Managed by AI",
+        "extracting": "Extracting order...",
+        "created": "Created order {number}",
+        "captured": "Captured customer details"
+      },
+      "performance": {
+        "title": "AI Performance",
+        "handling": "AI Handling Rate",
+        "speed": "Response Speed",
+        "roi": "Social ROI",
+        "est_sales": "Est. social sales via DMs this week"
+      },
+      "connectivity": {
+        "manage": "Manage",
+        "connect": "Connect"
+      }
+    },
+    "ComingSoon": {
+      "title": "Coming Soon",
+      "sub": "Our team is working hard to bring this feature to your store.",
+      "btn": "Request Early Access",
+      "back": "Back to Dashboard"
+    },
+    "Analytics": {
+      "title": "Business Analytics 📈",
+      "sub": "Real-time performance metrics and AI insights.",
+      "locked": {
+        "title": "Analytics is a Growth feature 🔒",
+        "sub": "Upgrade your plan to unlock revenue charts, conversion rates, and AI-powered business insights.",
+        "btn": "Upgrade to Growth — {price} DA/mo →"
+      },
+      "stats": {
+        "revenue": "Total Revenue",
+        "orders": "Total Orders",
+        "delivered": "Delivered",
+        "rate": "Delivery Rate"
+      },
+      "charts": {
+        "weekly": "Weekly Revenue Performance (DA)",
+        "social": "Social Sync Breakdown"
+      },
+      "sync": {
+        "active": "AI OMNI-SYNC: ACTIVE",
+        "sub": "Your sales bot is extracting orders and customer data correctly from all connected DMs.",
+        "btn": "Manage Sync"
+      }
+    },
+    "Products": {
+      "title": "Product Hub 🛍️",
+      "sub": "Manage your catalog for social sales automation.",
+      "add_btn": "+ New Product",
+      "loading": "Fetching inventory...",
+      "empty": {
+        "title": "Empty Catalog",
+        "sub": "Add products to enable AI-powered social sales.",
+        "btn": "Add First Product"
+      },
+      "card": {
+        "edit": "Edit",
+        "delete": "Delete",
+        "uncategorized": "Uncategorized",
+        "in_stock": "In Stock",
+        "out_of_stock": "Out of Stock"
+      },
+      "form": {
+        "add_title": "Create Product",
+        "edit_title": "Edit Product",
+        "name": "Name",
+        "category": "Category",
+        "price": "Price (DA)",
+        "stock": "Initial Stock",
+        "sizes": "Sizes (comma separated)",
+        "colors": "Colors (comma separated)",
+        "cancel": "Cancel",
+        "save": "Save Changes",
+        "create": "Create Product ←",
+        "processing": "Processing..."
+      },
+      "toasts": {
+        "updated": "Product updated!",
+        "added": "Product added!",
+        "deleted": "Product deleted"
+      }
+    }
+  },
+  "Inventory": {
+    "title": "Inventory Control",
+    "sub": "{count} products tracked ({units} units total)",
+    "table": {
+      "product": "Product Name",
+      "sku": "SKU",
+      "qty": "Qty",
+      "reserved": "Reserved",
+      "status": "Status"
+    },
+    "status": {
+      "in_stock": "In Stock",
+      "low_stock": "Low Stock",
+      "out_of_stock": "Out of Stock"
+    },
+    "empty": {
+      "title": "Empty Inventory",
+      "description": "Start tracking your products. As soon as you add products to your catalog, they will appear here with real-time stock levels."
+    }
+  },
+  "Orders": {
+    "title": "Orders Manager",
+    "sub": "Track and process your social sales from all channels.",
+    "search_placeholder": "Search orders...",
+    "add_btn": "+ New Order",
+    "kanban": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "wilaya": "Wilaya",
+      "total": "Total",
+      "move": "Move Next →",
+      "empty_stage": "No orders here"
+    },
+    "toasts": {
+      "moved": "Order moved to {status}",
+      "created": "Order created successfully!"
+    },
+    "form": {
+      "title": "Create New Order",
+      "name": "Customer Name",
+      "phone": "Phone Number",
+      "wilaya": "Wilaya (Location)",
+      "total": "Total Amount (DA)",
+      "discard": "Discard",
+      "create": "Create Order ←",
+      "creating": "Creating..."
+    }
+  },
+  "Customers": {
+    "title": "Customer CRM",
+    "stats": "{count} loyal customers",
+    "search_placeholder": "Search by name, phone or location...",
+    "table": {
+      "customer": "Customer",
+      "phone": "Phone",
+      "wilaya": "Wilaya",
+      "orders": "Orders",
+      "spent": "Total Spent",
+      "last_order": "Last Order"
+    },
+    "empty": {
+      "title": "No customers yet",
+      "description": "Your customer database will grow automatically as AI records data from your social DMs."
+    },
+    "locked": {
+      "title": "CRM is a Growth feature 🔒",
+      "description": "Unlock advanced customer profiles, lifetime value tracking, and targeted marketing insights.",
+      "features": {
+        "0": "Purchase History",
+        "1": "Lifetime Value (LTV)",
+        "2": "Direct WhatsApp Sync",
+        "3": "Customer Segments"
+      },
+      "upgrade_btn": "Upgrade to Growth ←"
+    }
+  }
+}
