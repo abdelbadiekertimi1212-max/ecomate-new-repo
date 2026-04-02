@@ -38,7 +38,7 @@ export default async function ContactPage() {
               marginBottom: 16
             }}>Get in <span style={{ background: 'linear-gradient(135deg, #10b981, #3b82f6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Touch</span></h1>
             <p className="hero-h2 sr-el sr-d1 sr-vis" style={{ fontSize: 'clamp(16px, 2vw, 18px)', color: 'rgba(255,255,255,.6)', maxWidth: 600, margin: '0 auto' }}>
-              Whether you're looking for an enterprise solution or need support with your current store, our team is here for you.
+              Whether you&apos;re looking for an enterprise solution or need support with your current store, our team is here for you.
             </p>
           </div>
 
@@ -52,7 +52,7 @@ export default async function ContactPage() {
             }}>
               <div style={{ fontSize: 48, marginBottom: 20 }}>🤝</div>
               <h2 style={{ fontFamily: 'var(--font-poppins)', fontSize: 24, fontWeight: 700, color: '#fff', marginBottom: 8 }}>Contact Sales</h2>
-              <p style={{ fontSize: 14, color: 'rgba(255,255,255,.5)', marginBottom: 24 }}>Ready to scale your e-commerce? Let's talk about custom plans.</p>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,.5)', marginBottom: 24 }}>Ready to scale your e-commerce? Let&apos;s talk about custom plans.</p>
               
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%', background: 'rgba(0,0,0,.3)', padding: 20, borderRadius: 16 }}>
                 <a href={`mailto:${salesEmail}`} style={{ display: 'flex', alignItems: 'center', gap: 12, color: '#60a5fa', textDecoration: 'none', fontWeight: 600, fontSize: 15 }}>

@@ -3,8 +3,24 @@ import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import toast from 'react-hot-toast'
 
+interface SubscriptionRequest {
+  id: string
+  user_id: string
+  plan: string
+  status: string
+  payment_method: string
+  payment_reference?: string
+  amount_da: number
+  created_at: string
+  profiles?: {
+    full_name: string
+    business_name: string
+    email: string
+  }
+}
+
 export default function CheckoutApprovals() {
-  const [requests, setRequests] = useState<any[]>([])
+  const [requests, setRequests] = useState<SubscriptionRequest[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -71,8 +87,9 @@ export default function CheckoutApprovals() {
 
       toast.success(`Request ${action}d successfully`)
       fetchRequests()
-    } catch (error: any) {
-      toast.error('Error: ' + error.message)
+    } catch (error) {
+      const err = error as Error
+      toast.error('Error: ' + err.message)
     }
   }
 

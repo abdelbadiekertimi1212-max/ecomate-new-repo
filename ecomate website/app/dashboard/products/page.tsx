@@ -9,7 +9,7 @@ import {
 } from 'lucide-react'
 import { motion, AnimatePresence, Variants } from 'framer-motion'
 
-const cardVariants: any = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: (i: number) => ({
     opacity: 1,
@@ -118,14 +118,7 @@ export default function ProductsPage() {
     p.category?.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: i * 0.05, duration: 0.5, ease: "easeOut" }
-    })
-  }
+
 
   const inputClass = "w-full px-4 py-3 bg-white/[0.03] border border-white/[0.08] rounded-2xl text-[13.5px] text-white outline-none focus:border-blue-500/50 focus:bg-white/[0.05] transition-all placeholder:text-white/20"
 
@@ -188,7 +181,7 @@ export default function ProductsPage() {
             <motion.div 
               key={p.id}
               custom={i}
-              variants={cardVariants as any}
+              variants={cardVariants}
               className="group relative bg-[#ffffff]/[0.02] border border-white/[0.05] rounded-[32px] p-6 hover:bg-[#ffffff]/[0.04] hover:border-white/[0.1] transition-all duration-500"
             >
               <div className="flex justify-between items-start mb-6">

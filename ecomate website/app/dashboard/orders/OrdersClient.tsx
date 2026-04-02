@@ -13,7 +13,19 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const KANBAN_STAGES = ['pending', 'confirmed', 'shipped', 'delivered']
 
-export default function OrdersClient({ initialOrders, userId }: { initialOrders: any[], userId: string }) {
+interface Order {
+  id: string
+  order_number: string
+  customer_name: string
+  customer_phone: string
+  wilaya: string
+  address: string
+  total_da: number
+  status: string
+  created_at: string
+}
+
+export default function OrdersClient({ initialOrders, userId }: { initialOrders: Order[], userId: string }) {
   const t = useTranslations('Orders')
   const locale = useLocale()
   const isAr = locale === 'ar'
@@ -42,7 +54,7 @@ export default function OrdersClient({ initialOrders, userId }: { initialOrders:
   }, [orders, search])
 
   const groupedOrders = useMemo(() => {
-    const groups: Record<string, any[]> = { pending: [], confirmed: [], shipped: [], delivered: [], cancelled: [] }
+    const groups: Record<string, Order[]> = { pending: [], confirmed: [], shipped: [], delivered: [], cancelled: [] }
     filteredOrders.forEach(o => {
       if (groups[o.status]) groups[o.status].push(o)
       else groups.pending.push(o)

@@ -1,15 +1,25 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import toast from 'react-hot-toast'
 
+interface Plan {
+  id: string
+  name: string
+  description: string
+  price: number
+  period: string
+  color: string
+  features: string[]
+  cta_text?: string
+}
+
 export default function CheckoutPage() {
   const router = useRouter()
-  const [plans, setPlans] = useState<any[]>([])
-  const [user, setUser] = useState<any>(null)
-  const [profile, setProfile] = useState<any>(null)
+  const [plans, setPlans] = useState<Plan[]>([])
+  const [user, setUser] = useState<{ id: string } | null>(null)
   const [selectedPlan, setSelectedPlan] = useState('growth')
   const [step, setStep] = useState<'plan' | 'payment' | 'success'>('plan')
   const [loading, setLoading] = useState(true)
@@ -30,13 +40,13 @@ export default function CheckoutPage() {
       ])
 
       if (profileRes.data) {
-        setProfile(profileRes.data)
         setPaymentForm(f => ({ ...f, name: profileRes.data.full_name || '' }))
       }
 
       if (plansRes.data) {
-        setPlans(plansRes.data)
-        const defaultPlan = plansRes.data.find((p: any) => p.price > 0 && p.id !== 'trial')?.id || plansRes.data[0]?.id
+        setPlans(plansRes.data as Plan[])
+        const data = plansRes.data as Plan[]
+        const defaultPlan = data.find(p => p.price > 0 && p.id !== 'trial')?.id || data[0]?.id
         setSelectedPlan(defaultPlan)
       }
       setLoading(false)
@@ -54,7 +64,7 @@ export default function CheckoutPage() {
     const { data: existing } = await supabase
       .from('subscriptions')
       .select('id')
-      .eq('user_id', user.id)
+      .eq('user_id', user?.id)
       .eq('status', 'pending_approval')
       .single()
 
@@ -73,7 +83,7 @@ export default function CheckoutPage() {
 
     // 2. Create subscription record (Matches schema.sql)
     const { error: subErr } = await supabase.from('subscriptions').insert({
-      user_id: user.id,
+      user_id: user?.id,
       plan: selectedPlan,
       status: 'pending_approval',
       payment_method: paymentForm.method,
@@ -94,7 +104,7 @@ export default function CheckoutPage() {
     // 3. Update profile state (but not fully active yet)
     await supabase.from('profiles').update({
       plan_status: 'pending_approval',
-    }).eq('id', user.id)
+    }).eq('id', user?.id)
 
     setStep('success')
     setLoading(false)
@@ -114,7 +124,7 @@ export default function CheckoutPage() {
             <div style={{ width: 80, height: 80, borderRadius: '50%', background: 'rgba(16,185,129,.12)', border: '2px solid rgba(16,185,129,.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 36, margin: '0 auto 24px' }}>✅</div>
             <h1 style={{ fontFamily: 'var(--font-poppins)', fontSize: 32, fontWeight: 900, color: '#fff', marginBottom: 12 }}>Check-out Submitted! 🎉</h1>
             <p style={{ fontSize: 16, color: 'rgba(255,255,255,.5)', lineHeight: 1.7, maxWidth: 480, margin: '0 auto 32px' }}>
-              Your {activePlan?.name} request is being reviewed by our team. You'll receive access within 2 hours of payment confirmation.
+              Your {activePlan?.name} request is being reviewed by our team. You&apos;ll receive access within 2 hours of payment confirmation.
             </p>
             <div style={{ display: 'flex', gap: 14, justifyContent: 'center' }}>
               <Link href="/dashboard" className="btn-primary" style={{ padding: '14px 32px', fontSize: 15, textDecoration: 'none' }}>
@@ -130,7 +140,7 @@ export default function CheckoutPage() {
                 {step === 'plan' ? 'Choose your plan' : 'Complete your order'}
               </h1>
               <p style={{ fontSize: 14, color: 'rgba(255,255,255,.4)', marginBottom: 28 }}>
-                {step === 'plan' ? 'Select the plan that fits your business' : 'Tell us how you\'ll pay — we\'ll activate your plan manually within 2 hours'}
+                {step === 'plan' ? 'Select the plan that fits your business' : 'Tell us how you&apos;ll pay — we&apos;ll activate your plan manually within 2 hours'}
               </p>
 
               {step === 'plan' && (

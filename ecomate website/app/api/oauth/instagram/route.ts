@@ -5,7 +5,7 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
     const clientId = searchParams.get('client_id')
-    const code = searchParams.get('code')
+    // const code = searchParams.get('code') // Unused for now, Make.com handles the token exchange
 
     // In a real scenario, we would redirect to Instagram's OAuth page first:
     // https://api.instagram.com/oauth/authorize?client_id=APP_ID&redirect_uri=THIS_ROUTE&scope=user_profile,user_media&response_type=code

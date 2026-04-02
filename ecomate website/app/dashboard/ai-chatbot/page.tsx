@@ -2,10 +2,8 @@
 
 import { useState } from 'react'
 import { 
-  MessageSquare, Zap, Target, Share2, 
-  Activity, TrendingUp, BarChart3, Globe, 
-  Send, CheckCircle2,
-  AlertCircle, ChevronRight
+  MessageSquare, Zap, Activity, TrendingUp, BarChart3, Globe, 
+  Send, CheckCircle2, ChevronRight
 } from 'lucide-react'
 import { useTranslations, useLocale } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'

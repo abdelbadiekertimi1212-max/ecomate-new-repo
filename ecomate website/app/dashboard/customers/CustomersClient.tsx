@@ -3,21 +3,34 @@ import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import Link from 'next/link'
 import { 
-  Users, Search, Filter, ArrowUpRight, 
-  Lock, Check, ChevronRight, Download,
+  Users, Search, Filter, 
+  Lock, Check, Download,
   Phone, MapPin, ShoppingBag, DollarSign,
   TrendingUp, TrendingDown, Star, MoreHorizontal
 } from 'lucide-react'
 import { useTranslations, useLocale } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FadeIn, ScaleIn, StaggerContainer, StaggerItem } from '@/components/ui/animations'
+import { StaggerContainer, StaggerItem } from '@/components/ui/animations'
 
-export default function CustomersClient({ profile }: { profile: any }) {
+interface Profile {
+  plan: string
+}
+
+interface Customer {
+  name: string
+  phone: string
+  wilaya: string
+  orders_count: number
+  total_spent: number
+  last_order: string
+}
+
+export default function CustomersClient({ profile }: { profile: Profile }) {
   const t = useTranslations('Customers')
   const locale = useLocale()
   const isAr = locale === 'ar'
   
-  const [customers, setCustomers] = useState<any[]>([])
+  const [customers, setCustomers] = useState<Customer[]>([])
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
 
@@ -31,7 +44,7 @@ export default function CustomersClient({ profile }: { profile: any }) {
 
       if (data) {
         // Group by phone to simulate CRM
-        const grouped = data.reduce((acc: any, curr: any) => {
+        const grouped = data.reduce((acc: Record<string, Customer>, curr: any) => {
           if (!acc[curr.customer_phone]) {
             acc[curr.customer_phone] = {
               name: curr.customer_name,
@@ -45,7 +58,7 @@ export default function CustomersClient({ profile }: { profile: any }) {
           acc[curr.customer_phone].orders_count += 1
           acc[curr.customer_phone].total_spent += curr.total_da
           return acc
-        }, {})
+        }, {} as Record<string, Customer>)
         setCustomers(Object.values(grouped))
       }
       setLoading(false)

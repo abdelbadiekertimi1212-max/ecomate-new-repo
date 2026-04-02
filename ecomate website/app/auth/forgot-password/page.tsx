@@ -40,7 +40,7 @@ export default function ForgotPasswordPage() {
               <div style={{ fontSize: 40, marginBottom: 12 }}>🔑</div>
               <h1 style={{ fontFamily: 'var(--font-poppins)', fontSize: 22, fontWeight: 800, color: '#fff', marginBottom: 8 }}>Reset your password</h1>
               <p style={{ fontSize: 13.5, color: 'rgba(255,255,255,.38)', lineHeight: 1.6 }}>
-                Enter your email and we'll send you a secure reset link instantly.
+                Enter your email and we&apos;ll send you a secure reset link instantly.
               </p>
             </div>
 
@@ -56,7 +56,7 @@ export default function ForgotPasswordPage() {
                   />
                 </div>
                 <p style={{ fontSize: 11.5, color: 'rgba(255,255,255,.22)', marginTop: 6 }}>
-                  We'll send a secure reset link to this email.
+                  We&apos;ll send a secure reset link to this email.
                 </p>
               </div>
               <button type="submit" disabled={loading} className="btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '14px', fontSize: 15 }}>
@@ -73,7 +73,7 @@ export default function ForgotPasswordPage() {
                 Click the link in the email to create a new password.
               </p>
               <div style={{ background: 'rgba(37,99,235,.08)', border: '1px solid rgba(37,99,235,.2)', borderRadius: 10, padding: '12px 16px', fontSize: 12.5, color: 'rgba(255,255,255,.45)', textAlign: 'left' }}>
-                ℹ️ Didn't get it? Check your spam folder. The link expires in 1 hour.
+                ℹ️ Didn&apos;t get it? Check your spam folder. The link expires in 1 hour.
               </div>
               <button onClick={() => { setSent(false); setEmail('') }} style={{ marginTop: 20, background: 'none', border: 'none', color: '#2563eb', cursor: 'pointer', fontSize: 13, fontWeight: 600 }}>
                 Try a different email

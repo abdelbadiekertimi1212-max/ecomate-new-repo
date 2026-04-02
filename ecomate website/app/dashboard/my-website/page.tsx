@@ -10,13 +10,22 @@ import { useTranslations, useLocale } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FadeIn, ScaleIn, StaggerContainer, StaggerItem } from '@/components/ui/animations'
 
+interface WebProject {
+  id: string
+  project_type: string
+  status: string
+  preview_url?: string
+  live_url?: string
+  notes?: string
+}
+
 const steps = ['kickoff', 'design', 'development', 'review', 'client_approval', 'launched']
 
 export default function WebProjectsPage() {
   const t = useTranslations('MyWebsite')
   const locale = useLocale()
   const isAr = locale === 'ar'
-  const [projects, setProjects] = useState<any[]>([])
+  const [projects, setProjects] = useState<WebProject[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

@@ -8,10 +8,10 @@ import { useTranslations, useLocale } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Mail, Lock, Eye, EyeOff, CheckCircle2, 
-  ArrowLeft, Loader2, Sparkles, ShieldCheck,
+  ArrowLeft, Loader2, Sparkles,
   Zap, ArrowRight
 } from 'lucide-react'
-import { FadeIn, ScaleIn, StaggerContainer, StaggerItem } from '@/components/ui/animations'
+import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/animations'
 
 function LoginContent() {
   const t = useTranslations('Auth.Login')
@@ -19,23 +19,26 @@ function LoginContent() {
   const locale = useLocale()
   const isRTL = locale === 'ar'
   const router = useRouter()
+  const [form, setForm] = useState({ email: '', password: '' })
+  const set = <K extends keyof typeof form>(k: K, v: (typeof form)[K]) => setForm(f => ({ ...f, [k]: v }))
   const supabase = createClient()
   const searchParams = useSearchParams()
   const authError = searchParams.get('error')
   const needsVerify = searchParams.get('verify')
   
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [showPw, setShowPw] = useState(false)
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault()
-    if (!email || !password) return toast.error(t('form.error_fill'))
+    if (!form.email || !form.password) return toast.error(t('form.error_fill'))
     setLoading(true)
     
     try {
-      const { data: { user }, error } = await supabase.auth.signInWithPassword({ email, password })
+      const { data: { user }, error } = await supabase.auth.signInWithPassword({ 
+        email: form.email, 
+        password: form.password 
+      })
       
       if (error) {
         if (error.message.includes('Email not confirmed')) {
@@ -61,6 +64,7 @@ function LoginContent() {
       router.push('/dashboard')
       router.refresh()
     } catch (err) {
+      console.error('Login error:', err)
       toast.error('An unexpected error occurred')
       setLoading(false)
     }
@@ -194,7 +198,7 @@ function LoginContent() {
                   <input
                     type="email" required
                     placeholder="youssef@business.dz"
-                    value={email} onChange={e => setEmail(e.target.value)}
+                    value={form.email} onChange={e => set('email', e.target.value)}
                     className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-12 text-white placeholder:text-white/10 focus:outline-none focus:border-blue-500/50 focus:ring-4 focus:ring-blue-500/10 transition-all font-medium"
                   />
                 </div>
@@ -214,7 +218,7 @@ function LoginContent() {
                   <input
                     type={showPw ? 'text' : 'password'} required
                     placeholder="••••••••"
-                    value={password} onChange={e => setPassword(e.target.value)}
+                    value={form.password} onChange={e => set('password', e.target.value)}
                     className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-12 text-white placeholder:text-white/10 focus:outline-none focus:border-blue-500/50 focus:ring-4 focus:ring-blue-500/10 transition-all font-medium"
                   />
                   <button 
@@ -250,10 +254,10 @@ function LoginContent() {
 
           <FadeIn direction="up" delay={0.6}>
             <footer className="mt-12 pt-8 border-t border-white/5 text-center">
-              <p className="text-white/40 font-medium">
-                {t('form.no_account')}{' '}
-                <Link href="/auth/register" className="text-blue-400 font-black no-underline hover:text-blue-300 transition-colors">
-                  {t('form.register')}
+              <p className="mt-8 text-center text-white/30 text-sm font-medium">
+                {t('signUp_prompt')}{' '}
+                <Link href="/auth/register" className="ml-2 text-blue-400 hover:text-blue-300 transition-colors font-bold">
+                  {t('signUp_link')}
                 </Link>
               </p>
             </footer>

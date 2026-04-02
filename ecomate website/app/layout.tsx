@@ -70,12 +70,11 @@ export const metadata: Metadata = {
 }
 
 export default async function RootLayout({ 
-  children,
-  params: { locale } 
+  children
 }: { 
-  children: React.ReactNode, 
-  params: { locale: string } 
+  children: React.ReactNode 
 }) {
+  const locale = await getLocale()
   const messages = await getMessages()
   const isArabic = locale === 'ar'
 

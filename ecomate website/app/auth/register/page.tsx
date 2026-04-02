@@ -8,12 +8,12 @@ import { useTranslations, useLocale } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   User, Mail, Store, Phone, Lock, Eye, EyeOff, 
-  ChevronRight, ChevronLeft, CheckCircle2, ShieldCheck,
-  Rocket, Zap, Globe, ArrowLeft, Loader2, Sparkles,
+  ChevronLeft, CheckCircle2, ShieldCheck,
+  Zap, ArrowLeft, Loader2, Sparkles,
   ArrowRight
 } from 'lucide-react'
 import { triggerWelcomeEmail } from './actions'
-import { FadeIn, ScaleIn, StaggerContainer, StaggerItem } from '@/components/ui/animations'
+import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/animations'
 
 export default function RegisterPage() {
   const t = useTranslations('Auth.Register')
@@ -30,7 +30,7 @@ export default function RegisterPage() {
     email: '', phone: '', password: '', confirm: '', terms: false,
   })
 
-  const set = (k: string, v: any) => setForm(f => ({ ...f, [k]: v }))
+  const set = <K extends keyof typeof form>(k: K, v: (typeof form)[K]) => setForm(f => ({ ...f, [k]: v }))
 
   function pwStrength(pw: string) {
     if (!pw) return { score: 0, label: '—', color: 'rgba(255,255,255,.1)' }
@@ -74,13 +74,13 @@ export default function RegisterPage() {
         return
       }
 
-      // Trigger branded welcome email via Resend
       await triggerWelcomeEmail(form.email, locale)
-
       toast.success(t('form.success'))
       router.push('/auth/login?verify=true')
-    } catch (err) {
-      toast.error('An unexpected error occurred')
+    } catch (error) {
+      const err = error as { message?: string }
+      toast.error(err.message || 'An error occurred during registration')
+    } finally {
       setLoading(false)
     }
   }
@@ -95,11 +95,9 @@ export default function RegisterPage() {
     <div className={`min-h-screen grid lg:grid-cols-2 bg-[#050a14] selection:bg-blue-500/30 font-inter ${isRTL ? 'rtl' : 'ltr'}`} dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Left Panel - Premium Brand Showcase */}
       <div className="hidden lg:flex flex-col justify-between p-16 relative overflow-hidden bg-[#07101f]">
-        {/* Animated Background Blobs */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[140px] -mr-64 -mt-32 animate-pulse" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-emerald-600/10 rounded-full blur-[120px] -ml-32 -mb-32" />
         
-        {/* Brand Header */}
         <Link href="/" className="relative z-10 flex items-center gap-3 no-underline group">
           <div className="w-12 h-12 bg-gradient-to-tr from-blue-600 to-blue-400 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform">
             <Zap className="w-7 h-7 text-white fill-current" />
@@ -109,7 +107,6 @@ export default function RegisterPage() {
           </span>
         </Link>
 
-        {/* Content */}
         <div className="relative z-10 max-w-lg">
           <FadeIn direction="up" delay={0.2}>
             <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-4 py-1.5 text-emerald-400 text-xs font-bold tracking-widest uppercase mb-6">
@@ -139,7 +136,6 @@ export default function RegisterPage() {
           </FadeIn>
         </div>
 
-        {/* Footer Badge */}
         <div className="relative z-10">
           <div className="glass inline-flex items-center gap-3 px-5 py-3 rounded-2xl">
             <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_12px_rgba(16,185,129,0.8)]" />
@@ -150,7 +146,6 @@ export default function RegisterPage() {
 
       {/* Right Panel - Register Form */}
       <div className="flex flex-col justify-center items-center px-6 lg:px-24 py-16 relative bg-[#050a14]">
-        {/* Navigation Back */}
         <div className="absolute top-8 left-8 right-8 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-white transition-colors no-underline group">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -163,7 +158,6 @@ export default function RegisterPage() {
         </div>
 
         <div className="w-full max-w-md">
-          {/* Progress Section */}
           <div className="mb-12">
             <div className="flex justify-between items-end mb-4">
               <div>
@@ -344,12 +338,18 @@ export default function RegisterPage() {
           </form>
 
           <footer className="mt-12 pt-8 border-t border-white/5 text-center">
-            <p className="text-white/40 font-medium">
-              {t('signIn_p')}{' '}
-              <Link href="/auth/login" className="text-blue-400 font-black no-underline hover:text-blue-300 transition-colors">
+            <p className="text-center text-white/30 text-sm font-medium">
+              {t('signIn_prompt')}{' '}
+              <Link href="/auth/login" className="ml-2 text-blue-400 hover:text-blue-300 transition-colors font-bold">
                 {t('signIn_link')}
               </Link>
             </p>
+            
+            <div className="mt-8">
+              <p className="text-white/20 text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">
+                &copy; 2026 EcoMate &mdash; {tc('footerBuilt')}
+              </p>
+            </div>
           </footer>
         </div>
       </div>

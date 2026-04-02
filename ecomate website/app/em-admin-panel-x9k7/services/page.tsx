@@ -4,11 +4,23 @@ import { createClient } from '@/lib/supabase/client'
 import toast from 'react-hot-toast'
 import ImageUpload from '@/components/admin/ImageUpload'
 
+interface Service {
+  id: string
+  name: string
+  description: string
+  icon: string
+  plan_required: string
+  tag: string
+  tag_color: string
+  is_active: boolean
+  sort_order: number
+}
+
 export default function ServiceManagement() {
-  const [services, setServices] = useState<any[]>([])
+  const [services, setServices] = useState<Service[]>([])
   const [loading, setLoading] = useState(true)
   const [modalOpen, setModalOpen] = useState(false)
-  const [editingService, setEditingService] = useState<any>(null)
+  const [editingService, setEditingService] = useState<Service | null>(null)
   const [form, setForm] = useState({ name: '', description: '', icon: '⚙️', plan_required: 'starter', tag: '', tag_color: '', is_active: true, sort_order: 0 })
 
   const supabase = createClient()

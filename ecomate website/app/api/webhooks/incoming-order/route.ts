@@ -70,7 +70,8 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true, orderId: order.id, customerId: customer.id })
 
-  } catch (err: any) {
+  } catch (error: unknown) {
+    const err = error as Error
     console.error('Webhook Error:', err.message)
     return NextResponse.json({ error: 'Failed to process webhook', details: err.message }, { status: 500 })
   }

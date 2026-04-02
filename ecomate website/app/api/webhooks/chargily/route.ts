@@ -23,8 +23,8 @@ export async function POST(req: Request) {
       const checkout = body.data
       const metadata = checkout.metadata || []
       
-      const clientId = metadata.find((m: any) => m.name === 'client_id')?.value
-      const planName = metadata.find((m: any) => m.name === 'plan_name')?.value
+      const clientId = metadata.find((m: { name: string, value: string }) => m.name === 'client_id')?.value
+      const planName = metadata.find((m: { name: string, value: string }) => m.name === 'plan_name')?.value
 
       if (clientId && planName) {
         const supabase = await createClient()
@@ -45,8 +45,9 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ received: true })
-  } catch (error: any) {
-    console.error('Chargily Webhook Error:', error)
-    return NextResponse.json({ error: error.message }, { status: 500 })
+  } catch (error: unknown) {
+    const err = error as Error
+    console.error('Chargily Webhook Error:', err)
+    return NextResponse.json({ error: err.message }, { status: 500 })
   }
 }

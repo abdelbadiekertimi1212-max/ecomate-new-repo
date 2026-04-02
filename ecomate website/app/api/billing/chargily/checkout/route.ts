@@ -32,8 +32,9 @@ export async function POST(req: Request) {
     })
 
     return NextResponse.json({ checkoutUrl: checkout.checkout_url })
-  } catch (error: any) {
-    console.error('Chargily Checkout Error:', error)
-    return NextResponse.json({ error: error.message }, { status: 500 })
+  } catch (error: unknown) {
+    const err = error as Error
+    console.error('Chargily Checkout Error:', err)
+    return NextResponse.json({ error: err.message }, { status: 500 })
   }
 }

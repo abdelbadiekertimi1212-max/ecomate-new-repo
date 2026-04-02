@@ -240,7 +240,9 @@
         "verify_p": "We've sent a verification link. Please click it to activate your account (Check spam folder).",
         "error_fill": "Please fill in all fields",
         "error_verify": "Please verify your email first. Check your inbox!",
-        "error_admin": "Invalid login credentials or unauthorized access."
+        "error_admin": "Invalid login credentials or unauthorized access.",
+        "signUp_prompt": "Don't have an account?",
+        "signUp_link": "Sign up"
       }
     },
     "Register": {

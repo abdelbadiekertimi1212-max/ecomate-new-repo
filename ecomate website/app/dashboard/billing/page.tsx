@@ -2,15 +2,13 @@
 import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { 
-  CreditCard, Landmark, Zap, Shield, CheckCircle2, 
-  UploadCloud, AlertCircle, Phone, ArrowUpRight,
-  TrendingUp, Star, Crown, Check
+  Shield, Zap, Star, Crown, Check
 } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 import { useSearchParams } from 'next/navigation'
 import { useTranslations, useLocale } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FadeIn, ScaleIn, StaggerContainer, StaggerItem } from '@/components/ui/animations'
+import { StaggerContainer, StaggerItem } from '@/components/ui/animations'
 
 export default function BillingPage() {
   const t = useTranslations('Billing')
@@ -19,7 +17,7 @@ export default function BillingPage() {
   const searchParams = useSearchParams()
   
   const [loading, setLoading] = useState(true)
-  const [profile, setProfile] = useState<any>(null)
+  const [profile, setProfile] = useState<any>(null) // FIXME: Define Profile interface
   const [uploading, setUploading] = useState(false)
 
   const PLANS = [
@@ -65,7 +63,8 @@ export default function BillingPage() {
       } else {
         throw new Error(data.error || t('toasts.error'))
       }
-    } catch (err: any) {
+    } catch (error: unknown) {
+      const err = error as Error
       toast.error(err.message)
     }
     setUploading(false)
