@@ -4,7 +4,7 @@ import { getTranslations, getLocale } from 'next-intl/server'
 import { 
   DollarSign, ShoppingBag, Package, Clock, 
   PlusCircle, Bot, Settings, TrendingUp,
-  ChevronRight, AlertCircle
+  AlertCircle
 } from 'lucide-react'
 
 export default async function DashboardPage() {

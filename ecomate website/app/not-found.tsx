@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { Home, AlertCircle, Compass } from 'lucide-react'
+import { Home, Compass } from 'lucide-react'
 
 export default function NotFound() {
   const t = useTranslations('Errors.404')

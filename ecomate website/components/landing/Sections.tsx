@@ -583,7 +583,7 @@ export function AISection() {
   )
 }
 
-export function Pricing({ plans = [] }: { plans?: any[] }) {
+export function Pricing({ plans: _plans = [] }: { plans?: unknown[] }) {
   const t = useTranslations('Sections.Pricing')
   const servicesRaw = t.raw('services')
   const services = Object.keys(servicesRaw || {}).map(slug => ({

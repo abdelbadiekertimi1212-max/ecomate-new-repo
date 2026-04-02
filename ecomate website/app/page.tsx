@@ -41,12 +41,10 @@ export default async function HomePage() {
   const [
     { data: reviews }, 
     { data: dbPartners }, 
-    { data: services }, 
     { data: plans }
   ] = await Promise.all([
     supabase.from('reviews').select('*').eq('is_approved', true).order('created_at', { ascending: false }).limit(9),
     supabase.from('partners').select('*').order('row_num').order('sort_order'),
-    supabase.from('services').select('id, name, description, icon, tag, tag_color, is_active, sort_order').eq('is_active', true).order('sort_order', { ascending: true }),
     supabase.from('plans').select('id, name, price, period, description, features, cta_text, color, is_popular, active, sort_order').order('sort_order', { ascending: true })
   ])
 
