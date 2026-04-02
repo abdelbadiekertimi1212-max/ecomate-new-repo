@@ -35,6 +35,16 @@ build_out.txt
 # private
 .agent/
 20092003Cgrave@/
+{js,sql,ecomate-admin-7k3p9x2q}/
+
+# build artifacts & logs
+build_log*.txt
+build_log*.log
+build_result.txt
+build_output.txt
+lint_output.txt
+lint_results.json
+tsconfig.tsbuildinfo
 
 # typescript
 *.tsbuildinfo

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Disallow private routes
+Disallow: /dashboard/
+Disallow: /em-admin-panel-x9k7/
+Disallow: /em-admin-entrance-x9k7/
+Disallow: /auth/
+Disallow: /checkout/
+Disallow: /api/
+
+Sitemap: https://ecomate-v2-prod.vercel.app/sitemap.xml
